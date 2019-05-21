@@ -1,12 +1,12 @@
 import React from 'react';
-
-
 import './movie-card-item.css';
+
+var classNames = require('classnames');
 
 const MovieCardItem = ({ movie , idx}) => {
     const { title, poster_path } = movie;
 
-    const style = `crd crd-${idx}`;
+    const style = classNames(`crd crd-${idx}`);
 
 
     return (

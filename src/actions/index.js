@@ -1,36 +1,28 @@
+import { createAction } from 'redux-act';
+
 import MovieService from '../services/movie-service';
+
 
 const movies = new MovieService();
 
-const moviesLoaded = (newMovies) => {
-    return {
-        type: 'FETCH_MOVIES_SUCCESS',
-        payload: newMovies
-    };
-};
+const moviesRequested = createAction('fetch_movie_request');
+const moviesLoaded = createAction('fetch_movie_success');
+const moviesError = createAction('fetch_movie_failure');
 
-const moviesRequested = () => {
-    return {
-        type: 'FETCH_MOVIES_REQUEST'
-    };
-};
 
-const moviesError = (error) => {
-    return {
-        type: 'FETCH_MOVIES_FAILURE',
-        payload: error
-    };
-};
-
-const fetchMovies = (page) => (dispatch) => {
-
-    console.log(page);
-    dispatch(moviesRequested());
-    movies.getOneMoviePage(page)
-        .then((data) => dispatch(moviesLoaded(data)))
-        .catch((err) => dispatch(moviesError(err)));
+const fetchMovies = (page) => async (dispatch) => {
+    try {
+        dispatch(moviesRequested())
+        const data = await movies.getOneMoviePage(page)
+        dispatch(moviesLoaded(data))
+    } catch (e) {
+        dispatch(moviesError(e))
+    }
 };
 
 export {
-    fetchMovies
+    fetchMovies,
+    moviesRequested,
+    moviesError,
+    moviesLoaded,
 };

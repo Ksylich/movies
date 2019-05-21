@@ -1,8 +1,8 @@
 import React from 'react';
 
 import './header.css';
-import logo from '../../Pictures/star.png';
-import down from '../../Pictures/arrow.png';
+import logo from '../../assets/icons/star.png';
+import down from '../../assets/icons/arrow.png';
 
 const Header = () => {
 
@@ -14,9 +14,9 @@ const Header = () => {
           <img src={logo} alt="Smiley face" height={45} width={45}></img>
           <label>Movies</label>
         </div>
-        <div className="navbar-brand" >
+        <div className="navbar-brand" />
 
-        </div>
+        
         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
         </button>
@@ -26,7 +26,7 @@ const Header = () => {
             <button type="button"
                 className="btn btn-outline-secondary">My Account   <img src={down} alt="Smiley face" height={15} width={15} ></img></button>
             </li>
-            <li className="nav-item active" ></li>
+            <li className="nav-item active" />
           </ul>
         </div>
       </div>

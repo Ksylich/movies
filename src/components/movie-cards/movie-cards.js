@@ -27,8 +27,10 @@ const MovieCards = ({ movies }) => {
 class MovieCardsContainer extends Component {
 
     state = {
-        currentPage: 1
+        currentPage: 2
     }
+
+    
 
     componentDidMount() {
         this.props.fetchMovies(this.state.currentPage);
