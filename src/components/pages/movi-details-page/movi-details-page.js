@@ -1,9 +1,5 @@
 import React from 'react';
 
-const MovieDetailsPage = () => {
-    return(
-        <div>MovieDetailsPage</div>
-    );
-};
+const MovieDetailsPage = () => <div>MovieDetailsPage</div>;
 
 export default MovieDetailsPage;
