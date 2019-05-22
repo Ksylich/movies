@@ -1,5 +1,4 @@
 {
-    
     "env": {
         "browser": true,
         "es6": true
@@ -9,23 +8,17 @@
         "Atomics": "readonly",
         "SharedArrayBuffer": "readonly"
     },
-    "parser": "babel-eslint",
     "parserOptions": {
-        
         "ecmaFeatures": {
-            "jsx": true,
-            "experimentalObjectRestSpread": true
+            "jsx": true
         },
-        "ecmaVersion": 6,      
+        "ecmaVersion": 2018,
         "sourceType": "module"
     },
     "plugins": [
         "react"
     ],
     "rules": {
-    
-         
         "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }]
     }
-    
 }

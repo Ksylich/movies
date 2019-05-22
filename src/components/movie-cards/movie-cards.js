@@ -53,7 +53,7 @@ class MovieCardsContainer extends Component {
 MovieCardsContainer.propTypes = {
   fetchMovies: PropTypes.func.isRequired,
   loading: PropTypes.bool.isRequired,
-  error: PropTypes.any.isRequired,
+  error: PropTypes.any,
   movies: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 

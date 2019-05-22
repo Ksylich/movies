@@ -1,3 +1,5 @@
+const axios = require('axios');
+
 export default class MovieService {
   apiBase = 'http://api.themoviedb.org/3/movie';
 
@@ -13,12 +15,8 @@ export default class MovieService {
   }
 
   async getResoureses (url) {
-    const res = await fetch(url);
-    if (!res.ok) {
-      throw new Error(`Could not fetch ${url}
-      , received ${res.status}`);
-    }
-    return await res.json();
+   const res = await axios.get(url);
+   return  res.data;
   }
 
   async getMovie(id) {
