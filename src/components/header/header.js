@@ -28,7 +28,7 @@ const Header = () => (
         <ul className="navbar-nav ml-auto">
           <li className="nav-item active">
             <button type="button" className="btn btn-outline-secondary">
-              My Account
+              {`My Account  `}
               <img src={down} alt="Smiley face" height={15} width={15} />
             </button>
           </li>

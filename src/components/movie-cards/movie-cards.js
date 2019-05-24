@@ -1,10 +1,11 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import MovieCardItem from '../movie-card-item';
 import ErrorIndicator from '../error-indicator';
 import { fetchMovies } from '../../actions';
 import Spinner from '../spinner';
+import PaginationPanel from '../pagination-panel';
 
 import './movie-cards.css';
 
@@ -31,7 +32,7 @@ class MovieCardsContainer extends Component {
 
   componentDidMount() {
     const { fetchMovies } = this.props;
-    const { currentPage } = this.state;
+    const { currentPage } = this.props;
     fetchMovies(currentPage);
   }
 
@@ -46,7 +47,13 @@ class MovieCardsContainer extends Component {
       return <ErrorIndicator />;
     }
 
-    return <MovieCards movies={movies} />;
+    return (
+      <Fragment>
+         <MovieCards movies={movies} />
+         <PaginationPanel/>
+      </Fragment>
+    
+      )
   }
 }
 
@@ -57,10 +64,11 @@ MovieCardsContainer.propTypes = {
   movies: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
-const mapStateToProps = ({ movies, loading, error }) => ({
+const mapStateToProps = ({ movies, loading, error,currentPage}) => ({
   movies,
   loading,
   error,
+  currentPage
 });
 
 const mapDispathToProps = {

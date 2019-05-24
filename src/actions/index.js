@@ -6,6 +6,7 @@ const movies = new MovieService();
 const moviesRequested = createAction('fetch_movie_request');
 const moviesLoaded = createAction('fetch_movie_success');
 const moviesError = createAction('fetch_movie_failure');
+const changeCurrentPage = createAction('changeCurrentPage');
 
 const fetchMovies = page => async (dispatch) => {
   try {
@@ -18,5 +19,5 @@ const fetchMovies = page => async (dispatch) => {
 };
 
 export {
-  fetchMovies, moviesRequested, moviesError, moviesLoaded,
+  fetchMovies, moviesRequested, moviesError, moviesLoaded, changeCurrentPage
 };
