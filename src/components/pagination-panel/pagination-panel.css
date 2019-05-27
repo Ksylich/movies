@@ -23,3 +23,7 @@
   color: #84cd92;
   font-weight: 1000;
 }
+
+.invisible{
+  display: none;
+}

@@ -12,7 +12,7 @@
    max-height: 450px;
 } */
 
-@media screen and (max-width: 2000px) {
+@media screen and (max-width: 2200px) {
   .body {
     grid-template-columns: repeat(6,1fr);
     }

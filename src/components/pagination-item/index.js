@@ -1,3 +1,3 @@
-import  PaginationIten from './pagination-item';
+import PaginationItem from './pagination-item';
 
-export default  PaginationIten;
+export default PaginationItem;

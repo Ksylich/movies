@@ -6,7 +6,7 @@ const initialState = {
   movies: [],
   loading: true,
   error: null,
-  currentPage:2
+  currentPage:1
 };
 
 const reducer = createReducer(

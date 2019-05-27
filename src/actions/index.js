@@ -8,11 +8,12 @@ const moviesLoaded = createAction('fetch_movie_success');
 const moviesError = createAction('fetch_movie_failure');
 const changeCurrentPage = createAction('changeCurrentPage');
 
-const fetchMovies = page => async (dispatch) => {
+const fetchMovies = (page=1) => async (dispatch) => {
   try {
     dispatch(moviesRequested());
     const data = await movies.getOneMoviePage(page);
     dispatch(moviesLoaded(data));
+    dispatch(changeCurrentPage(page));
   } catch (e) {
     dispatch(moviesError(e));
   }
