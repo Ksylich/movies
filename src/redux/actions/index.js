@@ -1,5 +1,5 @@
 import { createAction } from 'redux-act';
-import MovieService from '../services/movie-service';
+import MovieService from '../../services/movie-service';
 
 const movies = new MovieService();
 

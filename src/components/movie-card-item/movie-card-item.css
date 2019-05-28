@@ -2,6 +2,7 @@
 .crd > img{
     border-radius:2%;
     box-shadow: 0 0 10px rgba(0,0,0,0.5); /* Параметры тени */
+    height: 100%;
   
   }
   
@@ -15,7 +16,7 @@
     content: attr(data-title); /* Выводим текст */
     position: absolute; /* Абсолютное позиционирование */
     left: 0; right: 0; bottom: 5%; /* Положение подсказки */
-    height: 20%;
+    /* height: 20%; */
     width: 100%;
     z-index: 1; /* Отображаем подсказку поверх других элементов */
     background: rgba(59, 57, 61, 0.6); /* Полупрозрачный цвет фона */
@@ -26,9 +27,10 @@
     padding: 18px 10px; /* Поля */
     border: 1px solid #333; /* Параметры рамки */
     font-style: italic;
+    display: block;
    }
 
-@media  (max-width: 2200px) and (min-width: 1500px) {
+@media  (max-width: 2200px) and (min-width: 1336px) {
       .crd-18{
         grid-column-start: 3;
       }
@@ -37,7 +39,7 @@
       }
     }
 
-    @media screen and (max-width: 1024px) {
+    @media screen and (min-width:569px) and (max-width: 1024px) {
       .body {
         grid-template-columns: repeat(3,1fr);
         }

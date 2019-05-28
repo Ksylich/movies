@@ -1,17 +1,21 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import './movie-card-item.css';
+import React from "react";
+import PropTypes from "prop-types";
+import "./movie-card-item.css";
 
-const classNames = require('classnames');
+import NoPoster from "../../assets/icons/NoPoster.jpg";
+
+const classNames = require("classnames");
 
 const MovieCardItem = ({ movie, idx }) => {
   const { title, posterPath } = movie;
 
   const style = classNames(`crd crd-${idx}`);
 
+  const poster = !posterPath.includes("null") ? posterPath : NoPoster;
+
   return (
     <div className={style} data-title={title}>
-      <img src={posterPath} alt="" className="card-img-top" />
+      <img src={poster} alt="" className="card-img-top" />
     </div>
   );
 };
@@ -19,9 +23,9 @@ const MovieCardItem = ({ movie, idx }) => {
 MovieCardItem.propTypes = {
   movie: PropTypes.shape({
     title: PropTypes.string,
-    posterPath: PropTypes.string,
+    posterPath: PropTypes.string
   }).isRequired,
-  idx: PropTypes.number.isRequired,
+  idx: PropTypes.number.isRequired
 };
 
 export default MovieCardItem;

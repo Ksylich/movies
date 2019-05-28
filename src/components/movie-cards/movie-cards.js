@@ -1,9 +1,9 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import MovieCardItem from '../movie-card-item';
 import ErrorIndicator from '../error-indicator';
-import { fetchMovies } from '../../actions';
+import { fetchMovies } from "../../redux/actions";;
 import Spinner from '../spinner';
 
 import './movie-cards.css';
@@ -35,14 +35,6 @@ class MovieCardsContainer extends Component {
     fetchMovies(currentPage);
   }
 
-  // componentDidUpdate(prevProps){
-  //   if(prevProps.movies!==this.props.movies){
-  //     const { fetchMovies } = this.props;
-  //     const { currentPage } = this.props;
-  //     fetchMovies(currentPage);
-  //   }
-  // }
-
   render() {
     const { movies, loading, error } = this.props;
 
@@ -55,9 +47,7 @@ class MovieCardsContainer extends Component {
     }
 
     return (
-      <Fragment>
          <MovieCards movies={movies} />
-      </Fragment>
       )
   }
 }

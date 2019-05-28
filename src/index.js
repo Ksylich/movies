@@ -7,7 +7,7 @@ import App from './components/app';
 import ErrorBoundry from './components/error-boundry';
 
 
-import store from './store';
+import store from './redux/store';
 
 
 ReactDOM.render(

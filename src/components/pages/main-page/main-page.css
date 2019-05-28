@@ -1,3 +1,15 @@
 .main{
     background-color:#E6F3F3;
 }
+
+.label{
+    padding: 3rem 3.5rem 1rem;
+    font-size:25px;
+    font-weight: 600;
+    color: #878f89;
+}
+@media only screen and (min-device-width: 320px) and (max-device-width: 568px) and (orientation: portrait) {
+.label{
+    font-size:52px;
+}
+}
