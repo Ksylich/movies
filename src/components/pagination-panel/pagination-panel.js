@@ -8,7 +8,6 @@ import "./pagination-panel.css";
 
 const FIRST_PAGE = 1;
 const LAST_PAGE = 50;
-const PAGES_ARR = Array.from({ length: 50 },  (v,k) => k + 1);
 
 class PaginationPanel extends Component {
   renderPagBegin = () => {
@@ -35,6 +34,9 @@ class PaginationPanel extends Component {
   renderPages = () => {
     const { currentPage } = this.props;
     const pageIndex = currentPage - 1;
+
+    const PAGES_ARR = Array.from({ length: 50 },  (v,k) => k + 1);
+
     const prefPages = PAGES_ARR.slice(0, pageIndex);
     const afterPages = PAGES_ARR.slice(pageIndex + 1);
     const pageCount = 1

@@ -31,7 +31,7 @@ export default class MovieService {
     title: movie.original_title,
     overview: movie.overview,
     score: movie.vote_average,
-    budget: movie.budget,
+    language: movie.original_language,
     realiseDate: movie.release_date,
     posterPath: this.posterBase + movie.poster_path,
   });

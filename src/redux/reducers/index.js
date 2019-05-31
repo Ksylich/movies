@@ -1,40 +1,51 @@
-import { createReducer } from 'redux-act';
+import { createReducer } from "redux-act";
 
-import { moviesError, moviesLoaded, moviesRequested, changeCurrentPage } from '../actions';
+import {
+  moviesError,
+  moviesLoaded,
+  moviesRequested,
+  changeCurrentPage,
+  changeMovie,
+} from "../actions";
 
 const initialState = {
   movies: [],
   loading: true,
   error: null,
-  currentPage:1
+  currentPage: 1,
+  currentMovieId: 299534
 };
 
 const reducer = createReducer(
   {
-    [moviesRequested]: (state) => ({
+    [moviesRequested]: state => ({
       ...state,
       movies: [],
       loading: true,
-      error: null,
+      error: null
     }),
     [moviesLoaded]: (state, payload) => ({
       ...state,
       movies: payload,
       loading: false,
-      error: null,
+      error: null
     }),
     [moviesError]: (state, payload) => ({
       ...state,
       movies: [],
       loading: false,
-      error: payload,
+      error: payload
     }),
-    [changeCurrentPage]: (state,payload) => ({
+    [changeCurrentPage]: (state, payload) => ({
       ...state,
-      currentPage:payload,
+      currentPage: payload
     }),
+    [changeMovie]: (state, payload) => ({
+      ...state,
+      currentMovieId: payload
+    })
   },
-  initialState,
+  initialState
 );
 
 export default reducer;

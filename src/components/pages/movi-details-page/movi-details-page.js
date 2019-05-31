@@ -1,5 +1,10 @@
-import React from 'react';
+import React from "react";
+import DesktopMovieDetails from "../../movie-details-desktop";
 
-const MovieDetailsPage = () => <div>MovieDetailsPage</div>;
+const MovieDetailsPage = () => (
+  <div >
+    <DesktopMovieDetails />
+  </div>
+);
 
 export default MovieDetailsPage;

@@ -1,14 +1,17 @@
-import React from 'react';
+import React from "react";
+import { Link } from "react-router-dom";
 
-import './header.css';
-import logo from '../../assets/icons/star.png';
-import down from '../../assets/icons/arrow.png';
+import "./header.css";
+import logo from "../../assets/icons/star.png";
+import down from "../../assets/icons/arrow.png";
 
 const Header = () => (
   <div className="navbar navbar-expand-lg navbar-dark bg-dark static-top">
     <div className="container">
       <div className="navbar-brand">
-        <img src={logo} alt="Smiley face" height={45} width={45} />
+        <Link to="/">
+          <img src={logo} alt="Smiley face" height={45} width={45} />
+        </Link>
         <label>Movies</label>
       </div>
       <div className="navbar-brand" />
