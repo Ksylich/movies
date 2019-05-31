@@ -6,6 +6,7 @@ import {
   moviesRequested,
   changeCurrentPage,
   changeMovie,
+  changePagesCount,
 } from "../actions";
 
 const initialState = {
@@ -13,7 +14,8 @@ const initialState = {
   loading: true,
   error: null,
   currentPage: 1,
-  currentMovieId: 299534
+  currentMovieId: 299534,
+  pagesCount:0,
 };
 
 const reducer = createReducer(
@@ -43,6 +45,10 @@ const reducer = createReducer(
     [changeMovie]: (state, payload) => ({
       ...state,
       currentMovieId: payload
+    }),
+    [changePagesCount]: (state, payload) => ({
+      ...state,
+      pagesCount: payload
     })
   },
   initialState

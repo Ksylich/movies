@@ -83,7 +83,7 @@ class DesktopMovieDetails extends Component {
 
   renderMobMovieInformation(movie) {
     return (
-      <div classNam="desk-m">
+      <div className="desk-m">
         <div className="deck-top">
           <div className="image">
             <img src={movie.posterPath} alt="Smiley face" />

@@ -1,27 +1,31 @@
-const axios = require('axios');
+const axios = require("axios");
 
 export default class MovieService {
-  apiBase = 'http://api.themoviedb.org/3/movie';
+  apiBase = "http://api.themoviedb.org/3/movie";
 
-  apiKey = 'api_key=ebea8cfca72fdff8d2624ad7bbf78e4c';
+  apiKey = "api_key=ebea8cfca72fdff8d2624ad7bbf78e4c";
 
-  posterBase = 'http://image.tmdb.org/t/p/w342';
+  posterBase = "http://image.tmdb.org/t/p/w342";
 
   async getOneMoviePage(page) {
     const res = await this.getResoureses(
-      `${this.apiBase}/now_playing?${this.apiKey}&language=en-US&page=${page}`,
+      `${this.apiBase}/now_playing?${this.apiKey}&language=en-US&page=${page}`
     );
-    return res.results.map(this.transformMovie);
+
+    return {
+      movies: res.results.map(this.transformMovie),
+      pages_count: res.total_pages
+    };
   }
 
-  async getResoureses (url) {
-   const res = await axios.get(url);
-   return  res.data;
+  async getResoureses(url) {
+    const res = await axios.get(url);
+    return res.data;
   }
 
   async getMovie(id) {
     const res = await this.getResoureses(
-      `${this.apiBase}/${id}?${this.apiKey}`,
+      `${this.apiBase}/${id}?${this.apiKey}`
     );
     return this.transformMovie(res);
   }
@@ -33,7 +37,7 @@ export default class MovieService {
     score: movie.vote_average,
     language: movie.original_language,
     realiseDate: movie.release_date,
-    posterPath: this.posterBase + movie.poster_path,
+    posterPath: this.posterBase + movie.poster_path
   });
 }
 

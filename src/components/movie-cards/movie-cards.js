@@ -5,6 +5,7 @@ import MovieCardItem from "../movie-card-item";
 import ErrorIndicator from "../error-indicator";
 import { fetchMovies, changeMovie } from "../../redux/actions";
 import Spinner from "../spinner";
+import { MoviePropTypes } from "../../prop-type-values/movie-prop-types";
 
 import "./movie-cards.css";
 
@@ -22,17 +23,13 @@ const MovieCards = ({ movies, onHandleChooseMovie }) => (
 );
 
 MovieCards.propTypes = {
-  movies: PropTypes.arrayOf(PropTypes.object).isRequired
+  movies: PropTypes.arrayOf(MoviePropTypes),
 };
 
 class MovieCardsContainer extends Component {
-  state = {
-    currentPage: 2
-  };
-
+ 
   componentDidMount() {
-    const { fetchMovies } = this.props;
-    const { currentPage } = this.props;
+   const {fetchMovies,currentPage} = this.props;
     fetchMovies(currentPage);
   }
 

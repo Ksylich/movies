@@ -5,6 +5,7 @@ import PropTypes from "prop-types";
 import "./movie-card-item.css";
 
 import NoPoster from "../../assets/icons/NoPoster.jpg";
+import { MoviePropTypes } from "../../prop-type-values/movie-prop-types";
 
 const classNames = require("classnames");
 
@@ -25,10 +26,7 @@ const MovieCardItem = ({ movie, idx, onHandleChooseMovie }) => {
 };
 
 MovieCardItem.propTypes = {
-  movie: PropTypes.shape({
-    title: PropTypes.string,
-    posterPath: PropTypes.string
-  }).isRequired,
+  movie: MoviePropTypes,
   idx: PropTypes.number.isRequired
 };
 
