@@ -1,3 +1,3 @@
-import DesktopMovieDetails from './movie-details-desktop';
+import { DecktopNav, DecktopMovieInformation } from "./movie-details-desctop";
 
-export default DesktopMovieDetails;
+export { DecktopNav, DecktopMovieInformation };

@@ -1,278 +1,139 @@
-.content {
-  z-index: 3;
-  font-size: 25px;
-  position: absolute;
-  color: white;
-  width: 100%;
-  width: 100%;
-}
-
-.wrapper {
-  position: relative;
-  width: 100%;
-  height: 100%;
-}
-
-.section {
-  width: 100%;
-  height: 100%;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position-y: 10%;
-  -webkit-filter: blur(20px);
-  filter: blur(15px);
-  color: white;
-  z-index: 1;
-  position: absolute;
-}
-
-.cls {
-  width: 100%;
-  height: 900px;
-  background-color: #000;
-  opacity: 0.3;
-  position: absolute;
-  z-index: 2;
-}
-
 .nav-bar {
-  height: auto;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  position: relative;
-  width: 100%;
-  padding-top: 5rem;
-  color: #e2ece4;
-}
-
-.left {
-  display: grid;
-  grid-template-columns: 5% 95%;
-}
-
-.right {
-  display: grid;
-  grid-template-columns: 95% 5%;
-}
-
-.right .text {
-  padding-right: 1rem;
-  float: right;
-}
-
-.left .text {
-  padding-left: 1rem;
-}
-
-.desk {
-  height: auto;
-  width: 100%;
-  display: grid;
-  grid-template-columns: 30% 60%;
-  position: relative;
-  padding-top: 6rem;
-  grid-gap: 3em;
-}
-
-.image img{
-  width: 100%;
-}
-
-.info button {
-  margin: 0 1rem 0 auto;
-  border-width: 1px;
-  border-radius: 7%;
-  border-color: #868c88;
-  color: #868c88;
-}
-
-.info button:hover{
-    color:red;
-}
-
-.movie-title{
-  font-size: 40px;
-  color: white;
-  font-family: Arial, sans-serif; /* Гарнитура шрифта */
-  display: block;
-}
-
-.about{
-  margin-top: 0.5rem;
-  display: grid;
-  grid-template-columns: 15% 22% 60%;
-  font-size: 20px;
-  font-family: Arial, sans-serif; /* Гарнитура шрифта */
-}
-
-.language{
-  text-align: center;
-  border-right: 1px solid #868c88;
-  border-left: 1px solid #868c88;
-}
-
-.realise-date{
-  margin-left: 0.6em;
-}
-
-.overview{
-
-  padding-top: 1rem;
-  padding-bottom: 1rem;
-  border-top: 1px solid #868c88;
-  border-bottom: 1px solid #868c88;
-  margin-top: 1.5rem;
-  font-size: 20px;
-}
-
-
-
-
-
-
-
-@media  screen and (max-width: 1202px) {
-  .movie-title{
-    font-size: 30px;
+    height: auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    position: relative;
+    width: 100%;
+    padding-top: 5rem;
+    color: #e2ece4;
   }
-  .desk {
-    grid-gap: 1em;
-  }
-
-  .about{
-    grid-template-columns: 23% 30% 47%;
-    text-align: center;
-  }
-  .score{
-    padding-right: 0.3rem;
-  }
-  .realise-date{
-    padding-left: 0.1rem;
-  }
-  .language{
-    padding-left: 0.1rem;
-    padding-right: 0.1rem;
-  }
-  .overview{
-    font-size: 15px;
-  }
-  .image img{
-    height: 100%;
-  }
-}
-
-
-@media  screen and (max-width: 990px) {
-  /* .about{
-    grid-template-columns: 20% 30% 50%;
-  } */
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-.nav-bar-m{
-  display: grid;
-  margin-top: 3rem;
-  margin-left: 3rem;
-  margin-right: 4.3rem;
-  grid-template-columns: repeat(2, 1fr);
-  position: relative;
-  font-size: 50px;
-}
-
-.left-m {
-  display: grid;
-  grid-template-columns: 5% 95%;
-  width: auto;
-}
-
-.right-m {
-  display: grid;
-  grid-template-columns: 95% 5%;
-  width: auto;
-}
-
-.right-m .text {
-  padding-right: 1rem;
-  float: right;
-}
-
-.left-m .text {
-  padding-left: 2.5rem;
-}
-
-.nav-bar-m img{
-  padding-bottom: 0.29rem;
   
-}
+  .left {
+    display: grid;
+    grid-template-columns: 5% 95%;
+  }
+  
+  .right {
+    display: grid;
+    grid-template-columns: 95% 5%;
+  }
+  
+  .right .text {
+    padding-right: 1rem;
+    float: right;
+  }
+  
+  .left .text {
+    padding-left: 1rem;
+  }
+  
+  .desk {
+    height: auto;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 30% 60%;
+    position: relative;
+    padding-top: 6rem;
+    grid-gap: 3em;
+    /* min-width: 650px; */
+  }
+  
+  .image img{
+    width: 100%;
+  }
+  
+  .info button {
+    margin: 0 1rem 0 auto;
+    border-width: 1px;
+    border-radius: 7%;
+    border-color: #868c88;
+    color: #868c88;
+  }
+  
+  .info button:hover{
+      color:red;
+  }
+  
+  .movie-title{
+    font-size: 40px;
+    color: white;
+    font-family: Arial, sans-serif; /* Гарнитура шрифта */
+    display: block;
+  }
+  
+  .about{
+    margin-top: 0.5rem;
+    display: grid;
+    grid-template-columns: 15% 22% 60%;
+    font-size: 20px;
+    font-family: Arial, sans-serif; /* Гарнитура шрифта */
+  }
+  
+  .language{
+    text-align: center;
+    border-right: 1px solid #868c88;
+    border-left: 1px solid #868c88;
+  }
+  
+  .realise-date{
+    margin-left: 0.6em;
+  }
+  
+  .overview{
+  
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    border-top: 1px solid #868c88;
+    border-bottom: 1px solid #868c88;
+    margin-top: 1.5rem;
+    font-size: 20px;
+  }
+  
+  
+  
+  
+  
+  
+  
+  @media  screen and (max-width: 1202px) {
+    .movie-title{
+      font-size: 30px;
+    }
+    .desk {
+      grid-gap: 1em;
+    }
+  
+    .about{
+      grid-template-columns: 23% 30% 47%;
+      text-align: center;
+    }
+    .score{
+      padding-right: 0.3rem;
+    }
+    .realise-date{
+      padding-left: 0.1rem;
+    }
+    .language{
+      padding-left: 0.1rem;
+      padding-right: 0.1rem;
+    }
+    .overview{
+      font-size: 15px;
+    }
+    .image img{
+      height: 100%;
+    }
+  }
 
 
+  @media only screen and (min-device-width : 320px) and (max-device-width : 568px) {
+    .container{
+      display: none;
+    }
+  }
 
-
-.deck-top{
-  display: grid;
-  grid-template-columns:55% 45%;
-  margin-top: 15%;
-  margin-left: 3rem;
-  margin-right: 4.3rem;
-  grid-gap: 3em;
-}
-
-.deck-top .image img{
-  border-radius: 30px;
-}
-
-.info-top {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-}
-
-.score-mob{
-  display: grid;
-  grid-template-rows: 40% 60%;
-  padding-bottom: 4rem;
-}
-
-.txt{
- color: #e2ece4;
- font-size: 45px;
-}
-.txt-data{
- color: white;
- font-size: 60px;
-}
-
-.desk-bottom{
-  margin-top:3rem;
-  margin-left: 3rem;
-  margin-right: 4.3rem;
-}
-
-.mob-overview{
-  padding-top: 1rem;
-  padding-bottom: 1rem;
-  border-top: 1px solid #868c88;
-  border-bottom: 1px solid #868c88;
-  margin-top: 1rem;
-  font-size: 33px;
-}
-
-.mob-movie-title{
-  font-size: 65px;
-  color: white;
-  font-family: Arial, sans-serif; /* Гарнитура шрифта */
-  display: block;
-}
+  @media  screen and (max-width: 770px){
+    .about{    
+      font-size: 15px;
+    }
+  }

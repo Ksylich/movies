@@ -1,9 +1,9 @@
 import React from "react";
-import DesktopMovieDetails from "../../movie-details-desktop";
+import MovieDetails from "../../movie-details";
 
 const MovieDetailsPage = () => (
   <div >
-    <DesktopMovieDetails />
+    <MovieDetails />
   </div>
 );
 

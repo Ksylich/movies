@@ -1,15 +1,14 @@
 const axios = require("axios");
+require('dotenv').config();
+
 
 export default class MovieService {
-  apiBase = "http://api.themoviedb.org/3/movie";
-
-  apiKey = "api_key=ebea8cfca72fdff8d2624ad7bbf78e4c";
 
   posterBase = "http://image.tmdb.org/t/p/w342";
 
   async getOneMoviePage(page) {
     const res = await this.getResoureses(
-      `${this.apiBase}/now_playing?${this.apiKey}&language=en-US&page=${page}`
+      `${process.env.REACT_APP_API_BASE}/now_playing?${process.env.REACT_APP_API_KEY}&language=en-US&page=${page}`
     );
 
     return {
@@ -25,7 +24,7 @@ export default class MovieService {
 
   async getMovie(id) {
     const res = await this.getResoureses(
-      `${this.apiBase}/${id}?${this.apiKey}`
+      `${process.env.REACT_APP_API_BASE}/${id}?${process.env.REACT_APP_API_KEY}`
     );
     return this.transformMovie(res);
   }

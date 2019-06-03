@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
+
 import MovieCardItem from "../movie-card-item";
 import ErrorIndicator from "../error-indicator";
 import { fetchMovies, changeMovie } from "../../redux/actions";

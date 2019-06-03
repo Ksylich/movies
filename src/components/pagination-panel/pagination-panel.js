@@ -1,7 +1,9 @@
 import React, { Component, Fragment } from "react";
+
 import { connect } from "react-redux";
 import { fetchMovies } from "../../redux/actions";
 import PaginationItem from "../pagination-item";
+
 const classNames = require("classnames");
 
 import "./pagination-panel.css";
@@ -31,7 +33,7 @@ class PaginationPanel extends Component {
   };
 
   renderPages = () => {
-    const { currentPage,pagesCount} = this.props;
+    const { currentPage, pagesCount } = this.props;
     const pageIndex = currentPage - 1;
 
     const PAGES_ARR = Array.from({ length: pagesCount }, (v, k) => k + 1);

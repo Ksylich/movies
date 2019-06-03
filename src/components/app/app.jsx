@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import { Route, Switch } from 'react-router-dom';
-import Header from '../header';
 
+import Header from '../header';
 import { MovieDetailsPage, MainPage, FavoritesPage } from '../pages';
 
 import './app.css';
