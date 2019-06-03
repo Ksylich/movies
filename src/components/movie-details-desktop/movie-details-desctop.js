@@ -4,6 +4,7 @@ import "./movie-details-desktop.css";
 
 import left from "../../assets/icons/left-round-16.png";
 import right from "../../assets/icons/right-round-16.png";
+import NoPoster from "../../assets/icons/NoPoster.jpg";
 
 const DecktopNav = () => {
   return (
@@ -28,16 +29,17 @@ const DecktopNav = () => {
   );
 };
 
-const DecktopMovieInformation = ({ movie }) => {
+const DecktopMovieInformation = ({ movie, addToFavorites }) => {
+  const poster = !movie.posterPath.includes("null") ? movie.posterPath : NoPoster;
   return (
     <div className="container">
       <div className="desk">
         <div className="image">
-          <img src={movie.posterPath} alt="Smiley face" />
+          <img src={poster} alt="Smiley face" />
         </div>
         <div className="info">
           <div className="row top">
-            <button type="button" className="btn btn-default">
+            <button onClick={addToFavorites} type="button" className="btn btn-default">
               Add to favorite
             </button>
           </div>

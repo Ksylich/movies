@@ -7,6 +7,7 @@ import {
   changeCurrentPage,
   changeMovie,
   changePagesCount,
+  addToFavorites
 } from "../actions";
 
 const initialState = {
@@ -15,7 +16,8 @@ const initialState = {
   error: null,
   currentPage: 1,
   currentMovieId: 299534,
-  pagesCount:0,
+  pagesCount: 0,
+  favorites: [],
 };
 
 const reducer = createReducer(
@@ -24,34 +26,38 @@ const reducer = createReducer(
       ...state,
       movies: [],
       loading: true,
-      error: null
+      error: null,
     }),
     [moviesLoaded]: (state, payload) => ({
       ...state,
       movies: payload,
       loading: false,
-      error: null
+      error: null,
     }),
     [moviesError]: (state, payload) => ({
       ...state,
       movies: [],
       loading: false,
-      error: payload
+      error: payload,
     }),
     [changeCurrentPage]: (state, payload) => ({
       ...state,
-      currentPage: payload
+      currentPage: payload,
     }),
     [changeMovie]: (state, payload) => ({
       ...state,
-      currentMovieId: payload
+      currentMovieId: payload,
     }),
     [changePagesCount]: (state, payload) => ({
       ...state,
-      pagesCount: payload
+      pagesCount: payload,
+    }),
+    [addToFavorites]: (state, payload) => ({
+      ...state,
+      favorites: [...state.favorites, payload],
     })
   },
-  initialState
+  initialState,
 );
 
 export default reducer;

@@ -3,6 +3,7 @@ import React from "react";
 import left_arrow from "../../assets/icons/left-arrow.png";
 import right_arrow from "../../assets/icons/right-arrow.png";
 import star from "../../assets/icons/US_Army_Star.png";
+import NoPoster from "../../assets/icons/NoPoster.jpg";
 
 import './movie-details-mb.css';
 
@@ -27,12 +28,13 @@ const MobNav = () => {
   );
 };
 
-const MobMovieInformation = ({ movie }) => {
+const MobMovieInformation = ({ movie, addToFavorites}) => {
+  const poster = !movie.posterPath.includes("null") ? movie.posterPath : NoPoster;
   return (
     <div className="desk-m">
       <div className="deck-top">
         <div className="image">
-          <img src={movie.posterPath} alt="Smiley face" />
+          <img src={poster} alt="Smiley face" />
         </div>
         <div className="info-mob">
           <div className="info-top">
@@ -40,7 +42,7 @@ const MobMovieInformation = ({ movie }) => {
               <div className="txt">Score:</div>
               <div className="txt-data">{movie.score}</div>
             </div>
-            <div className="icon">
+            <div onClick={addToFavorites} className="icon">
               <img src={star} alt="Smiley face" height={150} width={150} />
             </div>
           </div>

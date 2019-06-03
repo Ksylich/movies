@@ -9,6 +9,7 @@ const moviesError = createAction("fetch_movie_failure");
 const changeCurrentPage = createAction("changeCurrentPage");
 const changeMovie = createAction("changeChosenMovie");
 const changePagesCount = createAction("change_pages_count");
+const addToFavorites = createAction("addMovieToFavorites");
 
 const fetchMovies = (page = 1) => async dispatch => {
   try {
@@ -29,5 +30,6 @@ export {
   moviesLoaded,
   changeCurrentPage,
   changeMovie,
-  changePagesCount
+  changePagesCount,
+  addToFavorites,
 };
