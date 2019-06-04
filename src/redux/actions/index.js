@@ -9,7 +9,8 @@ const moviesError = createAction("fetch_movie_failure");
 const changeCurrentPage = createAction("changeCurrentPage");
 const changeMovie = createAction("changeChosenMovie");
 const changePagesCount = createAction("change_pages_count");
-const addToFavorites = createAction("addMovieToFavorites");
+const addToFavorites = createAction("add_movie_to_favorites");
+const removeMovie = createAction('remove_movie_from_favorites');
 
 const fetchMovies = (page = 1) => async dispatch => {
   try {
@@ -32,4 +33,5 @@ export {
   changeMovie,
   changePagesCount,
   addToFavorites,
+  removeMovie,
 };

@@ -10,12 +10,12 @@ const Header = () => (
     <div className="container">
       <div className="navbar-brand">
         <Link to="/">
-          <img src={logo} alt="Smiley face" height={45} width={45} />
-        </Link>
+          <img src={logo} alt="Smiley face" height={45} width={45} />   
         <label>Movies</label>
+        </Link>
       </div>
       <div className="navbar-brand" />
-
+      <Link to="/favorites-page">
       <button
         className="navbar-toggler"
         type="button"
@@ -27,13 +27,16 @@ const Header = () => (
       >
         <span className="navbar-toggler-icon" />
       </button>
+      </Link>
       <div className="collapse navbar-collapse" id="navbarResponsive">
         <ul className="navbar-nav ml-auto">
           <li className="nav-item active">
+          <Link to="/favorites-page">
             <button type="button" className="btn btn-outline-secondary">
               {`My Account  `}
               <img src={down} alt="Smiley face" height={15} width={15} />
             </button>
+            </Link>
           </li>
           <li className="nav-item active" />
         </ul>

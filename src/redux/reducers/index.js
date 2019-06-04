@@ -7,7 +7,8 @@ import {
   changeCurrentPage,
   changeMovie,
   changePagesCount,
-  addToFavorites
+  addToFavorites, 
+  removeMovie
 } from "../actions";
 
 const initialState = {
@@ -55,6 +56,10 @@ const reducer = createReducer(
     [addToFavorites]: (state, payload) => ({
       ...state,
       favorites: [...state.favorites, payload],
+    }),
+    [removeMovie]: (state, payload) => ({
+      ...state,
+      favorites: [...state.favorites.slice(0, payload), ...state.favorites.slice(payload+1)],
     })
   },
   initialState,
