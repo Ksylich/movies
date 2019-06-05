@@ -7,14 +7,14 @@ import NoPoster from "../../assets/icons/NoPoster.jpg";
 
 import './movie-details-mb.css';
 
-const MobNav = () => {
+const MobNav = ({onHandleBack}) => {
   return (
     <div className="nav-bar-m">
       <div className="left-m">
         <div>
           <img src={left_arrow} alt="Smiley face" height={40} width={40} />
         </div>
-        <div className="text">Back</div>
+        <div onClick={onHandleBack} className="text">Back</div>
       </div>
       <div className="right-m">
         <div>

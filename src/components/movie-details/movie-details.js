@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-// import {withRouter} from 'react-router-dom';
-
+import { withRouter } from "react-router-dom";
 
 import "./movie-details.css";
 
@@ -11,13 +10,12 @@ import { addToFavorites } from "../../redux/actions";
 
 const classNames = require("classnames");
 
-
 class MovieDetails extends Component {
   render() {
-    const { currentMovieId, movies, favorites, addToFavorites} = this.props;
+    const { currentMovieId, favorites, addToFavorites, movies, history } = this.props;
     const movie = movies.find(movie => movie.id === currentMovieId);
     const isFavorite = !favorites.find(mov => mov.id === movie.id);
- 
+
     const style = classNames({ " ": isFavorite, " hidden": !isFavorite });
     const sectionStyle = {
       backgroundImage: `url(${movie.posterPath})`
@@ -26,13 +24,13 @@ class MovieDetails extends Component {
       <div className="wrapper">
         <div className="section" style={sectionStyle} />
         <div className="content">
-          <MobNav />
+          <MobNav onHandleBack={history.goBack} />
           <MobMovieInformation
             movie={movie}
             btnStyle={style}
             addToFavorites={() => addToFavorites(movie)}
           />
-          <DecktopNav />
+          <DecktopNav onHandleBack={history.goBack}/>
           <DecktopMovieInformation
             movie={movie}
             btnStyle={style}
@@ -44,9 +42,8 @@ class MovieDetails extends Component {
   }
 }
 
-const mapStateToProps = ({ currentMovieId,movies, favorites }) => ({
+const mapStateToProps = ({ currentMovieId, favorites }) => ({
   currentMovieId,
-  movies,
   favorites
 });
 
@@ -54,8 +51,9 @@ const mapDispatchToProps = {
   addToFavorites
 };
 
-export default
+export default withRouter(
   connect(
     mapStateToProps,
     mapDispatchToProps
-  )(MovieDetails);
+  )(MovieDetails)
+);

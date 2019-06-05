@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from "react-router-dom";
 
 import './favorites-item.css';
 
@@ -12,7 +13,9 @@ const FavoriteItem = ({movie,onHandleRemoveMovie, onHandleChooseMovie}) => {
         <div className="item-list">
         <div className="item">
           <div onClick={onHandleChooseMovie} className="image_fav">
+          <Link className='lnk' to="/movie-details-page" >
             <img src={poster} alt="Smiley face" />
+          </Link>
           </div>
           <div className="info">
             <div className="fav-info-top">
