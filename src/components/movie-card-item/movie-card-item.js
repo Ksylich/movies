@@ -18,7 +18,7 @@ const MovieCardItem = ({ movie, idx, onHandleChooseMovie }) => {
 
   return (
     <div className={style} data-title={title} onClick={onHandleChooseMovie}>
-      <Link className='lnk' to="/movie-details-page">
+      <Link className='lnk' to="/movie-details-page" >
         <img src={poster} alt="" className="card-img-top" />
       </Link>
     </div>

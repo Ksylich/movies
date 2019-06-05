@@ -12,7 +12,7 @@
     margin-bottom: 1rem;
   }
   
-  .image_fav-fav img {
+  .image_fav img {
     width: 90%;
     align-content: center;
   }
@@ -77,8 +77,6 @@
       padding-left: 8%;
       padding-right: 10%;
     }
-
-  
   }
   
   @media screen and (min-device-width: 568px) and (max-width: 768px){
@@ -88,7 +86,7 @@
     .overview-fav {
       font-size:18px;
     }
-    .image_fav-fav img {
+    .image_fav img {
         height: 650px;
         align-content: center;
       }
@@ -124,7 +122,7 @@
     .label-fav {
       font-size:45px;
     }
-    .image_fav-fav img {
+    .image_fav img {
       height:700px ;
       align-content: center;
     }

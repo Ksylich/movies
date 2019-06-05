@@ -29,8 +29,9 @@ const DecktopNav = () => {
   );
 };
 
-const DecktopMovieInformation = ({ movie, addToFavorites }) => {
+const DecktopMovieInformation = ({ movie, addToFavorites, btnStyle }) => {
   const poster = !movie.posterPath.includes("null") ? movie.posterPath : NoPoster;
+
   return (
     <div className="container">
       <div className="desk">
@@ -39,7 +40,7 @@ const DecktopMovieInformation = ({ movie, addToFavorites }) => {
         </div>
         <div className="info">
           <div className="row top">
-            <button onClick={addToFavorites} type="button" className="btn btn-default">
+            <button onClick={addToFavorites} type="button" className={`btn btn-default${btnStyle}`}>
               Add to favorite
             </button>
           </div>

@@ -20,7 +20,8 @@
   background-size: cover;
   background-position-y: 10%;
   -webkit-filter: blur(20px);
-  filter: blur(15px);
+  filter: blur(15px)  drop-shadow(0px 0px 0px black)  brightness(0.5) ;
+
   color: white;
   z-index: 1;
   position: absolute;
@@ -33,6 +34,10 @@
   opacity: 0.3;
   position: absolute;
   z-index: 2;
+}
+
+.hidden{
+  visibility: hidden;
 }
 
 /* iPhone 5 in portrait & landscape */

@@ -28,7 +28,7 @@ const MobNav = () => {
   );
 };
 
-const MobMovieInformation = ({ movie, addToFavorites}) => {
+const MobMovieInformation = ({ movie, addToFavorites,btnStyle}) => {
   const poster = !movie.posterPath.includes("null") ? movie.posterPath : NoPoster;
   return (
     <div className="desk-m">
@@ -42,7 +42,7 @@ const MobMovieInformation = ({ movie, addToFavorites}) => {
               <div className="txt">Score:</div>
               <div className="txt-data">{movie.score}</div>
             </div>
-            <div onClick={addToFavorites} className="icon">
+            <div onClick={addToFavorites} className={`icon${btnStyle}`}>
               <img src={star} alt="Smiley face" height={150} width={150} />
             </div>
           </div>

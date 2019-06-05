@@ -1,3 +1,3 @@
-import DesktopMovieDetails from './movie-details';
+import MovieDetails from './movie-details';
 
-export default DesktopMovieDetails;
+export default MovieDetails;

@@ -95,7 +95,7 @@
   
   
   
-  @media  screen and (max-width: 1202px) {
+  @media  screen and  (min-device-width : 768px) and (max-width: 1202px) {
     .movie-title{
       font-size: 30px;
     }
@@ -120,9 +120,9 @@
     .overview{
       font-size: 15px;
     }
-    /* .image img{
+    .image img{
       height: 350px;
-    } */
+    }
   }
 
   /* @media   screen and  (min-device-width : 768px) and (max-width: 1024px){

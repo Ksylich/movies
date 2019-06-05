@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react';
 import { Route, Switch } from 'react-router-dom';
+import { LastLocationProvider } from 'react-router-last-location';
 
 import Header from '../header';
 import { MovieDetailsPage, MainPage, FavoritesPage } from '../pages';
@@ -7,6 +8,7 @@ import { MovieDetailsPage, MainPage, FavoritesPage } from '../pages';
 import './app.css';
 
 const App = () => (
+  <LastLocationProvider>
   <Fragment>
     <Header />
     <Switch>
@@ -17,6 +19,7 @@ const App = () => (
       <Route path="/favorites-page" component={FavoritesPage} />
     </Switch>
   </Fragment>
+  </LastLocationProvider>
 );
 
 export default App;
