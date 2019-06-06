@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 
@@ -10,42 +10,31 @@ import { addToFavorites } from "../../redux/actions";
 
 const classNames = require("classnames");
 
-class MovieDetails extends Component {
-  render() {
-    const { currentMovieId, favorites, addToFavorites, movies, history } = this.props;
-    const movie = movies.find(movie => movie.id === currentMovieId);
-    const isFavorite = !favorites.find(mov => mov.id === movie.id);
-
-    const style = classNames({ " ": isFavorite, " hidden": !isFavorite });
-    const sectionStyle = {
-      backgroundImage: `url(${movie.posterPath})`
-    };
-    return (
-      <div className="wrapper">
-        <div className="section" style={sectionStyle} />
-        <div className="content">
-          <MobNav onHandleBack={history.goBack} />
-          <MobMovieInformation
-            movie={movie}
-            btnStyle={style}
-            addToFavorites={() => addToFavorites(movie)}
-          />
-          <DecktopNav onHandleBack={history.goBack}/>
-          <DecktopMovieInformation
-            movie={movie}
-            btnStyle={style}
-            addToFavorites={() => addToFavorites(movie)}
-          />
-        </div>
+const MovieDetails = ({ addToFavorites, movie, history, isFavorite, onHandleNext }) => {
+  const style = classNames({ " ": isFavorite, " hidden": !isFavorite });
+  const sectionStyle = {
+    backgroundImage: `url(${movie.posterPath})`
+  };
+  return (
+    <div className="wrapper">
+      <div className="section" style={sectionStyle} />
+      <div className="content">
+        <MobNav onHandleBack={history.goBack} onHandleNext={onHandleNext} />
+        <MobMovieInformation
+          movie={movie}
+          btnStyle={style}
+          addToFavorites={() => addToFavorites(movie)}
+        />
+        <DecktopNav onHandleBack={history.goBack} onHandleNext={onHandleNext} />
+        <DecktopMovieInformation
+          movie={movie}
+          btnStyle={style}
+          addToFavorites={() => addToFavorites(movie)}
+        />
       </div>
-    );
-  }
-}
-
-const mapStateToProps = ({ currentMovieId, favorites }) => ({
-  currentMovieId,
-  favorites
-});
+    </div>
+  );
+};
 
 const mapDispatchToProps = {
   addToFavorites
@@ -53,7 +42,7 @@ const mapDispatchToProps = {
 
 export default withRouter(
   connect(
-    mapStateToProps,
+    null,
     mapDispatchToProps
   )(MovieDetails)
 );

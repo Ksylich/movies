@@ -6,7 +6,7 @@ import left from "../../assets/icons/left-round-16.png";
 import right from "../../assets/icons/right-round-16.png";
 import NoPoster from "../../assets/icons/NoPoster.jpg";
 
-const DecktopNav = ({onHandleBack}) => {
+const DecktopNav = ({onHandleBack, onHandleNext}) => {
   return (
     <div className="container">
       <div className="nav-bar">
@@ -18,7 +18,7 @@ const DecktopNav = ({onHandleBack}) => {
         </div>
         <div className="right">
           <div>
-            <div className="text">Next movie</div>
+            <div onClick={onHandleNext} className="text">Next movie</div>
           </div>
           <div>
             <img src={right} alt="Smiley face" height={17} width={17} />
