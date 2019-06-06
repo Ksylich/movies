@@ -9,16 +9,16 @@ import './app.css';
 
 const App = () => (
   <LastLocationProvider>
-  <Fragment>
-    <Header />
-    <Switch>
-      <Route path="/" component={MainPage} exact />
+    <Fragment>
+      <Header />
+      <Switch>
+        <Route path="/" component={MainPage} exact />
 
-      <Route path="/movie-details-page" component={MovieDetailsPage} />
+        <Route path="/movie-details-page" component={MovieDetailsPage} />
 
-      <Route path="/favorites-page" component={FavoritesPage} />
-    </Switch>
-  </Fragment>
+        <Route path="/favorites-page" component={FavoritesPage} />
+      </Switch>
+    </Fragment>
   </LastLocationProvider>
 );
 

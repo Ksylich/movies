@@ -1,15 +1,13 @@
-import React from "react";
+import React from 'react';
 
-import "./favorites.css";
+import './favorites.css';
 
 import FavoritesListContainer from '../../favorites-list';
 
-const FavoritesPage = () => {
-  return (
-    <div className="main">
-      <FavoritesListContainer/>
-    </div>
-  );
-};
+const FavoritesPage = () => (
+  <div className="main">
+    <FavoritesListContainer />
+  </div>
+);
 
 export default FavoritesPage;

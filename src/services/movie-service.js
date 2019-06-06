@@ -1,19 +1,18 @@
-const axios = require("axios");
+const axios = require('axios');
 require('dotenv').config();
 
 
 export default class MovieService {
-
-  posterBase = "http://image.tmdb.org/t/p/w342";
+  posterBase = 'http://image.tmdb.org/t/p/w342';
 
   async getOneMoviePage(page) {
     const res = await this.getResoureses(
-      `${process.env.REACT_APP_API_BASE}/now_playing?${process.env.REACT_APP_API_KEY}&language=en-US&page=${page}`
+      `${process.env.REACT_APP_API_BASE}/now_playing?${process.env.REACT_APP_API_KEY}&language=en-US&page=${page}`,
     );
 
     return {
       movies: res.results.map(this.transformMovie),
-      pages_count: res.total_pages
+      pages_count: res.total_pages,
     };
   }
 
@@ -24,7 +23,7 @@ export default class MovieService {
 
   async getMovie(id) {
     const res = await this.getResoureses(
-      `${process.env.REACT_APP_API_BASE}/${id}?${process.env.REACT_APP_API_KEY}`
+      `${process.env.REACT_APP_API_BASE}/${id}?${process.env.REACT_APP_API_KEY}`,
     );
     return this.transformMovie(res);
   }
@@ -36,7 +35,7 @@ export default class MovieService {
     score: movie.vote_average,
     language: movie.original_language,
     realiseDate: movie.release_date,
-    posterPath: this.posterBase + movie.poster_path
+    posterPath: this.posterBase + movie.poster_path,
   });
 }
 

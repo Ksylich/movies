@@ -1,18 +1,18 @@
-import { createAction } from "redux-act";
-import MovieService from "../../services/movie-service";
+import { createAction } from 'redux-act';
+import MovieService from '../../services/movie-service';
 
 const movies = new MovieService();
 
-const moviesRequested = createAction("fetch_movie_request");
-const moviesLoaded = createAction("fetch_movie_success");
-const moviesError = createAction("fetch_movie_failure");
-const changeCurrentPage = createAction("changeCurrentPage");
-const changeMovie = createAction("changeChosenMovie");
-const changePagesCount = createAction("change_pages_count");
-const addToFavorites = createAction("add_movie_to_favorites");
+const moviesRequested = createAction('fetch_movie_request');
+const moviesLoaded = createAction('fetch_movie_success');
+const moviesError = createAction('fetch_movie_failure');
+const changeCurrentPage = createAction('changeCurrentPage');
+const changeMovie = createAction('changeChosenMovie');
+const changePagesCount = createAction('change_pages_count');
+const addToFavorites = createAction('add_movie_to_favorites');
 const removeMovie = createAction('remove_movie_from_favorites');
 
-const fetchMovies = (page = 1) => async dispatch => {
+const fetchMovies = (page = 1) => async (dispatch) => {
   try {
     dispatch(moviesRequested());
     const data = await movies.getOneMoviePage(page);

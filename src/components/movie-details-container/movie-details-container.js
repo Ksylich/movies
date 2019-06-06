@@ -1,9 +1,11 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { withLastLocation } from "react-router-last-location";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { withLastLocation } from 'react-router-last-location';
+import PropTypes from 'prop-types';
 
-import MovieDetails from "../movie-details";
-import { changeMovie } from "../../redux/actions";
+import MovieDetails from '../movie-details';
+import { changeMovie } from '../../redux/actions';
+import MoviePropTypes from '../../prop-type-values/movie-prop-types';
 
 class MovieDetailsContainer extends Component {
   onNextClick(movies) {
@@ -15,9 +17,11 @@ class MovieDetailsContainer extends Component {
   }
 
   render() {
-    const { movies, favorites, currentMovieId, lastLocation } = this.props;
-    const mvs = lastLocation.pathname === "/" ? movies : favorites;
-    const movie = mvs.find(movie => movie.id === currentMovieId);
+    const {
+      movies, favorites, currentMovieId, lastLocation,
+    } = this.props;
+    const mvs = lastLocation.pathname === '/' ? movies : favorites;
+    const movie = mvs.find(m => m.id === currentMovieId);
     const isFavorite = !favorites.find(mov => mov.id === movie.id);
 
     return (
@@ -30,19 +34,28 @@ class MovieDetailsContainer extends Component {
   }
 }
 
+MovieDetailsContainer.propTypes = {
+  changeMovie: PropTypes.func.isRequired,
+  currentMovieId: PropTypes.number.isRequired,
+  lastLocation: PropTypes.object.isRequired,
+  movies: PropTypes.arrayOf(MoviePropTypes),
+  favorites: PropTypes.arrayOf(MoviePropTypes).isRequired,
+};
+
+
 const mapStateToProps = ({ movies, favorites, currentMovieId }) => ({
   movies,
   favorites,
-  currentMovieId
+  currentMovieId,
 });
 
 const mapDispatchToProps = {
-  changeMovie
+  changeMovie,
 };
 
 export default withLastLocation(
   connect(
     mapStateToProps,
-    mapDispatchToProps
-  )(MovieDetailsContainer)
+    mapDispatchToProps,
+  )(MovieDetailsContainer),
 );

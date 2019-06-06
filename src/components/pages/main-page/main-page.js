@@ -5,10 +5,10 @@ import PaginationPanel from '../../pagination-panel';
 import './main-page.css';
 
 const MainPage = () => (
-  <div className="main"> 
+  <div className="main">
     <div className="label">Latest Releases</div>
     <MovieCardsContainer />
-    <PaginationPanel/>  
+    <PaginationPanel />
   </div>
 );
 

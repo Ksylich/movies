@@ -1,19 +1,23 @@
-import React from "react";
-import { connect } from "react-redux";
-import { withRouter } from "react-router-dom";
+import React from 'react';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
-import "./movie-details.css";
+import './movie-details.css';
 
-import { DecktopNav, DecktopMovieInformation } from "../movie-details-desktop";
-import { MobNav, MobMovieInformation } from "../movie-details-mb";
-import { addToFavorites } from "../../redux/actions";
+import { DecktopNav, DecktopMovieInformation } from '../movie-details-desktop';
+import { MobNav, MobMovieInformation } from '../movie-details-mb';
+import { addToFavorites } from '../../redux/actions';
+import MoviePropTypes from '../../prop-type-values/movie-prop-types';
 
-const classNames = require("classnames");
+const classNames = require('classnames');
 
-const MovieDetails = ({ addToFavorites, movie, history, isFavorite, onHandleNext }) => {
-  const style = classNames({ " ": isFavorite, " hidden": !isFavorite });
+const MovieDetails = ({
+  addToFavorites, movie, history, isFavorite, onHandleNext,
+}) => {
+  const style = classNames({ ' ': isFavorite, ' hidden': !isFavorite });
   const sectionStyle = {
-    backgroundImage: `url(${movie.posterPath})`
+    backgroundImage: `url(${movie.posterPath})`,
   };
   return (
     <div className="wrapper">
@@ -36,13 +40,21 @@ const MovieDetails = ({ addToFavorites, movie, history, isFavorite, onHandleNext
   );
 };
 
+MovieDetails.propTypes = {
+  movie: MoviePropTypes,
+  isFavorite: PropTypes.bool.isRequired,
+  onHandleNext: PropTypes.func.isRequired,
+  addToFavorites: PropTypes.func.isRequired,
+  history: PropTypes.object.isRequired,
+};
+
 const mapDispatchToProps = {
-  addToFavorites
+  addToFavorites,
 };
 
 export default withRouter(
   connect(
     null,
-    mapDispatchToProps
-  )(MovieDetails)
+    mapDispatchToProps,
+  )(MovieDetails),
 );

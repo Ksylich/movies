@@ -1,14 +1,14 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import PropTypes from "prop-types";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
-import MovieCardItem from "../movie-card-item";
-import ErrorIndicator from "../error-indicator";
-import { fetchMovies, changeMovie } from "../../redux/actions";
-import Spinner from "../spinner";
-import { MoviePropTypes } from "../../prop-type-values/movie-prop-types";
+import MovieCardItem from '../movie-card-item';
+import ErrorIndicator from '../error-indicator';
+import { fetchMovies, changeMovie } from '../../redux/actions';
+import Spinner from '../spinner';
+import MoviePropTypes from '../../prop-type-values/movie-prop-types';
 
-import "./movie-cards.css";
+import './movie-cards.css';
 
 const MovieCards = ({ movies, onHandleChooseMovie }) => (
   <div className="body">
@@ -25,17 +25,19 @@ const MovieCards = ({ movies, onHandleChooseMovie }) => (
 
 MovieCards.propTypes = {
   movies: PropTypes.arrayOf(MoviePropTypes),
+  onHandleChooseMovie: PropTypes.func.isRequired,
 };
 
 class MovieCardsContainer extends Component {
- 
   componentDidMount() {
-   const {fetchMovies,currentPage} = this.props;
+    const { fetchMovies, currentPage } = this.props;
     fetchMovies(currentPage);
   }
 
   render() {
-    const { movies, loading, error, changeMovie } = this.props;
+    const {
+      movies, loading, error, changeMovie,
+    } = this.props;
 
     if (loading) {
       return <Spinner />;
@@ -52,11 +54,13 @@ class MovieCardsContainer extends Component {
 MovieCardsContainer.propTypes = {
   fetchMovies: PropTypes.func.isRequired,
   loading: PropTypes.bool.isRequired,
-  error: PropTypes.any,
-  movies: PropTypes.arrayOf(PropTypes.object).isRequired
+  error: PropTypes.object,
+  movies: PropTypes.arrayOf(MoviePropTypes),
 };
 
-const mapStateToProps = ({ movies, loading, error, currentPage }) => ({
+const mapStateToProps = ({
+  movies, loading, error, currentPage,
+}) => ({
   movies,
   loading,
   error,
@@ -70,5 +74,5 @@ const mapDispathToProps = {
 
 export default connect(
   mapStateToProps,
-  mapDispathToProps
+  mapDispathToProps,
 )(MovieCardsContainer);

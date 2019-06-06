@@ -1,4 +1,4 @@
-import { createReducer } from "redux-act";
+import { createReducer } from 'redux-act';
 
 import {
   moviesError,
@@ -7,9 +7,9 @@ import {
   changeCurrentPage,
   changeMovie,
   changePagesCount,
-  addToFavorites, 
-  removeMovie
-} from "../actions";
+  addToFavorites,
+  removeMovie,
+} from '../actions';
 
 const initialState = {
   movies: [],
@@ -59,8 +59,8 @@ const reducer = createReducer(
     }),
     [removeMovie]: (state, payload) => ({
       ...state,
-      favorites: [...state.favorites.slice(0, payload), ...state.favorites.slice(payload+1)],
-    })
+      favorites: [...state.favorites.slice(0, payload), ...state.favorites.slice(payload + 1)],
+    }),
   },
   initialState,
 );

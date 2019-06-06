@@ -1,8 +1,14 @@
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
 
 const MoviePropTypes = PropTypes.shape({
+  id: PropTypes.number,
   title: PropTypes.string,
-  posterPath: PropTypes.string
+  overview: PropTypes.string,
+  score: PropTypes.number,
+  language: PropTypes.string,
+  realiseDate: PropTypes.string,
+  posterPath: PropTypes.string,
+
 }).isRequired;
 
-export { MoviePropTypes };
+export default MoviePropTypes;
