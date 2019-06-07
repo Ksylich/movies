@@ -26,7 +26,7 @@ const MovieCardItem = ({ movie, idx, onHandleChooseMovie }) => {
 };
 
 MovieCardItem.propTypes = {
-  movie: MoviePropTypes,
+  movie: MoviePropTypes.isRequired,
   idx: PropTypes.number.isRequired,
   onHandleChooseMovie: PropTypes.func.isRequired,
 };

@@ -27,7 +27,7 @@ const FavoritesList = ({
 );
 
 FavoritesList.propTypes = {
-  favorites: PropTypes.arrayOf(MoviePropTypes),
+  favorites: PropTypes.arrayOf(MoviePropTypes).isRequired,
   onHandleChooseMovie: PropTypes.func.isRequired,
   onHandleRemoveMovie: PropTypes.func.isRequired,
 };
@@ -52,7 +52,7 @@ class FavoritesListContainer extends Component {
 }
 
 FavoritesListContainer.propTypes = {
-  favorites: PropTypes.arrayOf(MoviePropTypes),
+  favorites: PropTypes.arrayOf(MoviePropTypes).isRequired,
   changeMovie: PropTypes.func.isRequired,
   removeMovie: PropTypes.func.isRequired,
 };

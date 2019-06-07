@@ -9,6 +9,6 @@ const MoviePropTypes = PropTypes.shape({
   realiseDate: PropTypes.string,
   posterPath: PropTypes.string,
 
-}).isRequired;
+});
 
 export default MoviePropTypes;

@@ -34,7 +34,7 @@ const FavoriteItem = ({ movie, onHandleRemoveMovie, onHandleChooseMovie }) => {
 };
 
 FavoriteItem.propTypes = {
-  movie: MoviePropTypes,
+  movie: MoviePropTypes.isRequired,
   onHandleChooseMovie: PropTypes.func.isRequired,
   onHandleRemoveMovie: PropTypes.func.isRequired,
 };

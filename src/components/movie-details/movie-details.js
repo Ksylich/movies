@@ -9,15 +9,20 @@ import { DecktopNav, DecktopMovieInformation } from '../movie-details-desktop';
 import { MobNav, MobMovieInformation } from '../movie-details-mb';
 import { addToFavorites } from '../../redux/actions';
 import MoviePropTypes from '../../prop-type-values/movie-prop-types';
+import NoPoster from '../../assets/icons/NoPoster.jpg';
 
 const classNames = require('classnames');
 
 const MovieDetails = ({
-  addToFavorites, movie, history, isFavorite, onHandleNext,
+  addToFavorites,
+  movie,
+  history,
+  isFavorite,
+  onHandleNext,
 }) => {
   const style = classNames({ ' ': isFavorite, ' hidden': !isFavorite });
   const sectionStyle = {
-    backgroundImage: `url(${movie.posterPath})`,
+    backgroundImage: !movie.posterPath.includes('null') ? `url(${movie.posterPath})` : `url(${NoPoster})`,
   };
   return (
     <div className="wrapper">
@@ -41,11 +46,11 @@ const MovieDetails = ({
 };
 
 MovieDetails.propTypes = {
-  movie: MoviePropTypes,
+  movie: MoviePropTypes.isRequired,
   isFavorite: PropTypes.bool.isRequired,
   onHandleNext: PropTypes.func.isRequired,
   addToFavorites: PropTypes.func.isRequired,
-  history: PropTypes.object.isRequired,
+  history: PropTypes.shape({ push: PropTypes.func.isRequired }).isRequired,
 };
 
 const mapDispatchToProps = {

@@ -70,7 +70,7 @@ const MobMovieInformation = ({ movie, addToFavorites, btnStyle }) => {
 };
 
 MobMovieInformation.propTypes = {
-  movie: MoviePropTypes,
+  movie: MoviePropTypes.isRequired,
   addToFavorites: PropTypes.func.isRequired,
   btnStyle: PropTypes.string.isRequired,
 };

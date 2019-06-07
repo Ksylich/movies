@@ -38,7 +38,7 @@ MovieDetailsContainer.propTypes = {
   changeMovie: PropTypes.func.isRequired,
   currentMovieId: PropTypes.number.isRequired,
   lastLocation: PropTypes.object.isRequired,
-  movies: PropTypes.arrayOf(MoviePropTypes),
+  movies: PropTypes.arrayOf(MoviePropTypes).isRequired,
   favorites: PropTypes.arrayOf(MoviePropTypes).isRequired,
 };
 

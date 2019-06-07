@@ -24,7 +24,7 @@ const MovieCards = ({ movies, onHandleChooseMovie }) => (
 );
 
 MovieCards.propTypes = {
-  movies: PropTypes.arrayOf(MoviePropTypes),
+  movies: PropTypes.arrayOf(MoviePropTypes).isRequired,
   onHandleChooseMovie: PropTypes.func.isRequired,
 };
 
@@ -51,11 +51,17 @@ class MovieCardsContainer extends Component {
   }
 }
 
+MovieCardsContainer.defaultProps = {
+  error: {},
+};
+
 MovieCardsContainer.propTypes = {
   fetchMovies: PropTypes.func.isRequired,
   loading: PropTypes.bool.isRequired,
   error: PropTypes.object,
-  movies: PropTypes.arrayOf(MoviePropTypes),
+  movies: PropTypes.arrayOf(MoviePropTypes).isRequired,
+  currentPage: PropTypes.number.isRequired,
+  changeMovie: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = ({

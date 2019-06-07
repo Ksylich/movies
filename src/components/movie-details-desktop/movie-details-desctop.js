@@ -65,7 +65,7 @@ const DecktopMovieInformation = ({ movie, addToFavorites, btnStyle }) => {
 };
 
 DecktopMovieInformation.propTypes = {
-  movie: MoviePropTypes,
+  movie: MoviePropTypes.isRequired,
   addToFavorites: PropTypes.func.isRequired,
   btnStyle: PropTypes.string.isRequired,
 };
