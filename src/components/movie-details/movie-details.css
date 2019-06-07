@@ -63,3 +63,15 @@
     height: 94vh;
   }
 }
+
+@media   screen  and (max-height: 700px){
+  .section {
+    height: 89vh; 
+  }
+}
+
+@media   screen  and (max-height: 600px){
+  .section {
+    height: 610px; 
+  }
+}
