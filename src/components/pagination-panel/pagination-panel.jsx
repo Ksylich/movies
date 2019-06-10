@@ -1,33 +1,35 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 
 import { fetchMovies } from '../../redux/actions';
 import PaginationItem from '../pagination-item';
 
 import './pagination-panel.css';
 
-const classNames = require('classnames');
 
 class PaginationPanel extends Component {
   renderPagBegin = () => {
     const { currentPage } = this.props;
     const style = classNames({
-      ' invisible': currentPage === 1,
+      invisible: currentPage === 1,
     });
     return (
       <Fragment>
         <PaginationItem
           title="First"
-          style={classNames('active')}
-          onHandleChangePage={this.handleChangePage.bind(this, 1)}
+          style="active"
+          onHandleChangePage={this.handleChangePage}
           pageItemStyle={style}
+          currentPage={1}
         />
 
         <PaginationItem
           title="Prev"
-          onHandleChangePage={this.handleChangePage.bind(this, currentPage - 1)}
+          onHandleChangePage={this.handleChangePage}
           pageItemStyle={style}
+          currentPage={currentPage - 1}
         />
       </Fragment>
     );
@@ -57,8 +59,9 @@ class PaginationPanel extends Component {
         <PaginationItem
           key={`pagebutton-${currentPage}`}
           title={currentPage}
-          style={classNames('active')}
-          onHandleChangePage={this.handleChangePage.bind(this, currentPage)}
+          style="active"
+          onHandleChangePage={this.handleChangePage}
+          currentPage={currentPage}
         />
         {this.renderPageNumbers(after)}
         {afterPages.length > pageCount ? (
@@ -76,35 +79,38 @@ class PaginationPanel extends Component {
     <PaginationItem
       key={`pagebutton-${pageNumber}`}
       title={pageNumber}
-      onHandleChangePage={this.handleChangePage.bind(this, pageNumber)}
+      onHandleChangePage={this.handleChangePage}
+      currentPage={pageNumber}
     />
   );
 
   renderPagEnd = () => {
     const { currentPage, pagesCount } = this.props;
     const style = classNames({
-      ' invisible': currentPage === pagesCount,
+      invisible: currentPage === pagesCount,
     });
 
     return (
       <Fragment>
         <PaginationItem
           title="Next"
-          onHandleChangePage={this.handleChangePage.bind(this, currentPage + 1)}
+          onHandleChangePage={this.handleChangePage}
           pageItemStyle={style}
+          currentPage={currentPage + 1}
         />
 
         <PaginationItem
           title="Last"
-          style={classNames('active')}
-          onHandleChangePage={this.handleChangePage.bind(this, pagesCount)}
+          style="active"
+          onHandleChangePage={this.handleChangePage}
           pageItemStyle={style}
+          currentPage={pagesCount}
         />
       </Fragment>
     );
   };
 
-  handleChangePage = pageNumber => this.props.fetchMovies(pageNumber);
+  handleChangePage = (pageNumber) => { this.props.fetchMovies(pageNumber); }
 
   render() {
     return (

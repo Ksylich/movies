@@ -1,13 +1,13 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 
 import './movie-card-item.css';
 
 import NoPoster from '../../assets/icons/NoPoster.jpg';
 import MoviePropTypes from '../../prop-type-values/movie-prop-types';
 
-const classNames = require('classnames');
 
 const MovieCardItem = ({ movie, idx, onHandleChooseMovie }) => {
   const { title, posterPath } = movie;
@@ -16,8 +16,15 @@ const MovieCardItem = ({ movie, idx, onHandleChooseMovie }) => {
 
   const poster = !posterPath.includes('null') ? posterPath : NoPoster;
 
+  const memoizedCallback = useCallback(
+    () => {
+      onHandleChooseMovie(movie.id);
+    },
+    [movie.id],
+  );
+
   return (
-    <div className={style} data-title={title} role="presentation" onClick={onHandleChooseMovie}>
+    <div className={style} data-title={title} role="presentation" onClick={memoizedCallback}>
       <Link className="lnk" to="/movie-details-page">
         <img src={poster} alt="" className="card-img-top" />
       </Link>

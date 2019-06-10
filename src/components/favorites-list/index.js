@@ -1,3 +1,3 @@
-import FavoritesListContainer from './favorites-list';
+import FavoritesListContainer from './favorite-list-container';
 
 export default FavoritesListContainer;

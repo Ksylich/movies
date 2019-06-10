@@ -8,19 +8,25 @@ import { changeMovie } from '../../redux/actions';
 import MoviePropTypes from '../../prop-type-values/movie-prop-types';
 
 class MovieDetailsContainer extends Component {
-  onNextClick(movies) {
+  onNextClick = () => {
     const { changeMovie, currentMovieId } = this.props;
+    const movies = this.returnArr();
 
     const next = movies.findIndex(movie => movie.id === currentMovieId) + 1;
 
     changeMovie(next >= movies.length ? movies[0].id : movies[next].id);
   }
 
+  returnArr() {
+    const { movies, favorites, lastLocation } = this.props;
+    return lastLocation.pathname === '/' ? movies : favorites;
+  }
+
   render() {
     const {
-      movies, favorites, currentMovieId, lastLocation,
+      favorites, currentMovieId,
     } = this.props;
-    const mvs = lastLocation.pathname === '/' ? movies : favorites;
+    const mvs = this.returnArr();
     const movie = mvs.find(m => m.id === currentMovieId);
     const isFavorite = !favorites.find(mov => mov.id === movie.id);
 
@@ -28,7 +34,8 @@ class MovieDetailsContainer extends Component {
       <MovieDetails
         movie={movie}
         isFavorite={isFavorite}
-        onHandleNext={this.onNextClick.bind(this, mvs)}
+        onHandleNext={this.onNextClick}
+        movies={mvs}
       />
     );
   }

@@ -2,31 +2,11 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import MovieCardItem from '../movie-card-item';
 import ErrorIndicator from '../error-indicator';
 import { fetchMovies, changeMovie } from '../../redux/actions';
 import Spinner from '../spinner';
 import MoviePropTypes from '../../prop-type-values/movie-prop-types';
-
-import './movie-cards.css';
-
-const MovieCards = ({ movies, onHandleChooseMovie }) => (
-  <div className="body">
-    {movies.map(movie => (
-      <MovieCardItem
-        key={movie.id}
-        movie={movie}
-        idx={movies.findIndex(m => m.id === movie.id)}
-        onHandleChooseMovie={() => onHandleChooseMovie(movie.id)}
-      />
-    ))}
-  </div>
-);
-
-MovieCards.propTypes = {
-  movies: PropTypes.arrayOf(MoviePropTypes).isRequired,
-  onHandleChooseMovie: PropTypes.func.isRequired,
-};
+import MovieCards from './movie-cards';
 
 class MovieCardsContainer extends Component {
   componentDidMount() {

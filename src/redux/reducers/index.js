@@ -57,10 +57,14 @@ const reducer = createReducer(
       ...state,
       favorites: [...state.favorites, payload],
     }),
-    [removeMovie]: (state, payload) => ({
-      ...state,
-      favorites: [...state.favorites.slice(0, payload), ...state.favorites.slice(payload + 1)],
-    }),
+    [removeMovie]: (state, payload) => {
+      const movieIndex = state.favorites.findIndex(movie => movie.id === payload);
+      return {
+        ...state,
+        favorites: [...state.favorites.slice(0, movieIndex),
+          ...state.favorites.slice(movieIndex + 1)],
+      };
+    },
   },
   initialState,
 );
