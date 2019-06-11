@@ -57,7 +57,6 @@ MovieDetails.propTypes = {
   onHandleNext: PropTypes.func.isRequired,
   addToFavorites: PropTypes.func.isRequired,
   history: PropTypes.shape({ push: PropTypes.func.isRequired }).isRequired,
-  movies: PropTypes.arrayOf(MoviePropTypes).isRequired,
 };
 
 const mapDispatchToProps = {

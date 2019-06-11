@@ -9,8 +9,8 @@ import right from '../../assets/icons/right-round-16.png';
 const DecktopNav = ({ onHandleBack, onHandleNext }) => (
   <div className="container">
     <div className="nav-bar">
-      <div className="left">
-        <div onClick={onHandleBack} role="presentation">
+      <div className="left" onClick={onHandleBack} role="presentation">
+        <div>
           <img src={left} alt="Smiley face" height={17} width={17} />
         </div>
         <div className="text">Back to list</div>

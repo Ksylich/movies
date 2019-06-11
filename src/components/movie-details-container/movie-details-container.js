@@ -22,13 +22,20 @@ class MovieDetailsContainer extends Component {
     return lastLocation.pathname === '/' ? movies : favorites;
   }
 
+  findCurrentMovie(movies) {
+    const { currentMovieId } = this.props;
+    return movies.find(m => m.id === currentMovieId);
+  }
+
+  checkIsFavorite(movie) {
+    const { favorites } = this.props;
+    return !favorites.find(mov => mov.id === movie.id);
+  }
+
   render() {
-    const {
-      favorites, currentMovieId,
-    } = this.props;
     const mvs = this.returnArr();
-    const movie = mvs.find(m => m.id === currentMovieId);
-    const isFavorite = !favorites.find(mov => mov.id === movie.id);
+    const movie = this.findCurrentMovie(mvs);
+    const isFavorite = this.checkIsFavorite(movie);
 
     return (
       <MovieDetails
