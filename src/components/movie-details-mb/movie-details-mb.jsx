@@ -9,7 +9,13 @@ import './movie-details-mb.css';
 
 
 const MobMovieInformation = ({ movie, addToFavorites, btnStyle }) => {
-  const poster = !movie.posterPath.includes('null') ? movie.posterPath : NoPoster;
+  MobMovieInformation.propTypes = {
+    movie: MoviePropTypes.isRequired,
+    addToFavorites: PropTypes.func.isRequired,
+    btnStyle: PropTypes.string.isRequired,
+  };
+
+  const poster = movie.posterPath || NoPoster;
   return (
     <div className="desk-m">
       <div className="deck-top">
@@ -44,10 +50,5 @@ const MobMovieInformation = ({ movie, addToFavorites, btnStyle }) => {
   );
 };
 
-MobMovieInformation.propTypes = {
-  movie: MoviePropTypes.isRequired,
-  addToFavorites: PropTypes.func.isRequired,
-  btnStyle: PropTypes.string.isRequired,
-};
 
 export default MobMovieInformation;

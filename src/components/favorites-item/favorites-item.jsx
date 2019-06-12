@@ -8,9 +8,7 @@ import NoPoster from '../../assets/icons/NoPoster.jpg';
 import MoviePropTypes from '../../prop-type-values/movie-prop-types';
 
 const FavoriteItem = ({ movie, onHandleRemoveMovie, onHandleChooseMovie }) => {
-  const poster = !movie.posterPath.includes('null')
-    ? movie.posterPath
-    : NoPoster;
+  const poster = movie.posterPath || NoPoster;
 
   const chooseMovie = useCallback(
     () => {

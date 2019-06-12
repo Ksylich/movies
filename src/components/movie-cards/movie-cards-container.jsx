@@ -9,6 +9,19 @@ import MoviePropTypes from '../../prop-type-values/movie-prop-types';
 import MovieCards from './movie-cards';
 
 class MovieCardsContainer extends Component {
+  static defaultProps = {
+    error: {},
+  };
+
+  static propTypes = {
+    fetchMovies: PropTypes.func.isRequired,
+    loading: PropTypes.bool.isRequired,
+    error: PropTypes.object,
+    movies: PropTypes.arrayOf(MoviePropTypes).isRequired,
+    currentPage: PropTypes.number.isRequired,
+    changeMovie: PropTypes.func.isRequired,
+  };
+
   componentDidMount() {
     const { fetchMovies, currentPage } = this.props;
     fetchMovies(currentPage);
@@ -30,19 +43,6 @@ class MovieCardsContainer extends Component {
     return <MovieCards movies={movies} onHandleChooseMovie={changeMovie} />;
   }
 }
-
-MovieCardsContainer.defaultProps = {
-  error: {},
-};
-
-MovieCardsContainer.propTypes = {
-  fetchMovies: PropTypes.func.isRequired,
-  loading: PropTypes.bool.isRequired,
-  error: PropTypes.object,
-  movies: PropTypes.arrayOf(MoviePropTypes).isRequired,
-  currentPage: PropTypes.number.isRequired,
-  changeMovie: PropTypes.func.isRequired,
-};
 
 const mapStateToProps = ({
   movies, loading, error, currentPage,

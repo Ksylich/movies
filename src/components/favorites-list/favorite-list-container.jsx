@@ -7,6 +7,12 @@ import MoviePropTypes from '../../prop-type-values/movie-prop-types';
 import FavoritesList from './favorites-list';
 
 class FavoritesListContainer extends Component {
+ static propTypes = {
+   favorites: PropTypes.arrayOf(MoviePropTypes).isRequired,
+   changeMovie: PropTypes.func.isRequired,
+   removeMovie: PropTypes.func.isRequired,
+ };
+
   removeMovie = (id) => {
     const { removeMovie } = this.props;
     removeMovie(id);
@@ -23,12 +29,6 @@ class FavoritesListContainer extends Component {
     );
   }
 }
-
-FavoritesListContainer.propTypes = {
-  favorites: PropTypes.arrayOf(MoviePropTypes).isRequired,
-  changeMovie: PropTypes.func.isRequired,
-  removeMovie: PropTypes.func.isRequired,
-};
 
 const mapStateToProps = ({ favorites }) => ({
   favorites,

@@ -9,7 +9,7 @@ const PaginationItem = ({
   onHandleChangePage,
   currentPage,
 }) => {
-  const memoizedCallback = useCallback(
+  const changePage = useCallback(
     () => {
       onHandleChangePage(currentPage);
     },
@@ -19,15 +19,14 @@ const PaginationItem = ({
   return (
 
     <li className={`page-item ${pageItemStyle}`}>
-      <div className="page-link" role="presentation" onClick={memoizedCallback}>
+      <div className="page-link" role="presentation" onClick={changePage}>
         <div className={style}>{title}</div>
       </div>
     </li>
   );
 };
 
-
-PaginationItem.defaulProps = {
+PaginationItem.defaultProps = {
   pageItemStyle: '',
   style: '',
   onHandleChangePage: noop,

@@ -8,6 +8,10 @@ export default class ErrorBoundry extends Component {
       hasError: false,
     };
 
+    static propTypes = {
+      children: PropTypes.node.isRequired,
+    };
+
     componentDidCatch() {
       this.setState({ hasError: true });
     }
@@ -21,7 +25,3 @@ export default class ErrorBoundry extends Component {
       return children;
     }
 }
-
-ErrorBoundry.propTypes = {
-  children: PropTypes.node.isRequired,
-};

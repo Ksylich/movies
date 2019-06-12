@@ -1,7 +1,6 @@
 import React, { useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 
 import './movie-card-item.css';
 
@@ -12,11 +11,11 @@ import MoviePropTypes from '../../prop-type-values/movie-prop-types';
 const MovieCardItem = ({ movie, idx, onHandleChooseMovie }) => {
   const { title, posterPath } = movie;
 
-  const style = classNames(`crd crd-${idx}`);
+  const style = `crd crd-${idx}`;
 
-  const poster = !posterPath.includes('null') ? posterPath : NoPoster;
+  const poster = posterPath || NoPoster;
 
-  const memoizedCallback = useCallback(
+  const chooseMovie = useCallback(
     () => {
       onHandleChooseMovie(movie.id);
     },
@@ -24,7 +23,7 @@ const MovieCardItem = ({ movie, idx, onHandleChooseMovie }) => {
   );
 
   return (
-    <div className={style} data-title={title} role="presentation" onClick={memoizedCallback}>
+    <div className={style} data-title={title} role="presentation" onClick={chooseMovie}>
       <Link className="lnk" to="/movie-details-page">
         <img src={poster} alt="" className="card-img-top" />
       </Link>

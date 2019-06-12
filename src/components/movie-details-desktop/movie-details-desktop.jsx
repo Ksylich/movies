@@ -8,7 +8,7 @@ import MoviePropTypes from '../../prop-type-values/movie-prop-types';
 
 
 const DecktopMovieInformation = ({ movie, addToFavorites, btnStyle }) => {
-  const poster = !movie.posterPath.includes('null') ? movie.posterPath : NoPoster;
+  const poster = movie.posterPath || NoPoster;
 
   return (
     <div className="container">

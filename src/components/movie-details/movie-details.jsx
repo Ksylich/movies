@@ -14,19 +14,27 @@ import NoPoster from '../../assets/icons/NoPoster.jpg';
 
 
 class MovieDetails extends Component {
+    static propTypes = {
+      movie: MoviePropTypes.isRequired,
+      isFavorite: PropTypes.bool.isRequired,
+      onHandleNext: PropTypes.func.isRequired,
+      addToFavorites: PropTypes.func.isRequired,
+      history: PropTypes.shape({ push: PropTypes.func.isRequired }).isRequired,
+    };
+
   addToFavorites = () => {
     const { movie, addToFavorites } = this.props;
     addToFavorites(movie);
   };
-
 
   render() {
     const {
       movie, history, isFavorite, onHandleNext,
     } = this.props;
     const style = classNames({ hidden: !isFavorite });
+    const poster = movie.posterPath || NoPoster;
     const sectionStyle = {
-      backgroundImage: !movie.posterPath.includes('null') ? `url(${movie.posterPath})` : `url(${NoPoster})`,
+      backgroundImage: `url(${poster})`,
     };
 
     return (
@@ -51,13 +59,6 @@ class MovieDetails extends Component {
   }
 }
 
-MovieDetails.propTypes = {
-  movie: MoviePropTypes.isRequired,
-  isFavorite: PropTypes.bool.isRequired,
-  onHandleNext: PropTypes.func.isRequired,
-  addToFavorites: PropTypes.func.isRequired,
-  history: PropTypes.shape({ push: PropTypes.func.isRequired }).isRequired,
-};
 
 const mapDispatchToProps = {
   addToFavorites,

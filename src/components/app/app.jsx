@@ -5,6 +5,7 @@ import { LastLocationProvider } from 'react-router-last-location';
 import Header from '../header';
 import { MovieDetailsPage, MainPage, FavoritesPage } from '../pages';
 
+
 import './app.css';
 
 const App = () => (
