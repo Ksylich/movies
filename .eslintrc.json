@@ -21,7 +21,7 @@
     "parser": "babel-eslint",
     "rules": {
     "strict": 0,
-    "no-underscore-dangle": [2, { "allow": ["window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__"] }]
+    "no-underscore-dangle": [2, { "allow": ["__REDUX_DEVTOOLS_EXTENSION_COMPOSE__"] }]
   }
   
 }
