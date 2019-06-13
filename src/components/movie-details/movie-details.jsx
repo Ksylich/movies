@@ -1,4 +1,4 @@
-import React, { Component, useCallback } from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
@@ -18,13 +18,13 @@ class MovieDetails extends Component {
       movie: MoviePropTypes.isRequired,
       isFavorite: PropTypes.bool.isRequired,
       onHandleNext: PropTypes.func.isRequired,
-      addToFavorites: PropTypes.func.isRequired,
+      addToFavoritesAction: PropTypes.func.isRequired,
       history: PropTypes.shape({ push: PropTypes.func.isRequired }).isRequired,
     };
 
   addToFavorites = () => {
-    const { movie, addToFavorites } = this.props;
-    addToFavorites(movie);
+    const { movie, addToFavoritesAction } = this.props;
+    addToFavoritesAction(movie);
   };
 
   render() {
@@ -61,7 +61,7 @@ class MovieDetails extends Component {
 
 
 const mapDispatchToProps = {
-  addToFavorites,
+  addToFavoritesAction: addToFavorites,
 };
 
 export default withRouter(

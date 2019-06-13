@@ -10,14 +10,14 @@ import './pagination-panel.css';
 
 
 class PaginationPanel extends Component {
-    static propTypes = {
-      currentPage: PropTypes.number.isRequired,
-      pagesCount: PropTypes.number.isRequired,
-      fetchMovies: PropTypes.func.isRequired,
-    };
+  static propTypes = {
+    currentPage: PropTypes.number.isRequired,
+    pagesCount: PropTypes.number.isRequired,
+    fetchMoviesAction: PropTypes.func.isRequired,
+  };
 
   renderPagBegin = () => {
-    const { currentPage, fetchMovies } = this.props;
+    const { currentPage, fetchMoviesAction } = this.props;
     const style = classNames({
       invisible: currentPage === 1,
     });
@@ -25,15 +25,15 @@ class PaginationPanel extends Component {
       <Fragment>
         <PaginationItem
           title="First"
-          style="active"
-          onHandleChangePage={fetchMovies}
+          btnStyle="active"
+          onHandleChangePage={fetchMoviesAction}
           pageItemStyle={style}
           currentPage={1}
         />
 
         <PaginationItem
           title="Prev"
-          onHandleChangePage={fetchMovies}
+          onHandleChangePage={fetchMoviesAction}
           pageItemStyle={style}
           currentPage={currentPage - 1}
         />
@@ -42,7 +42,7 @@ class PaginationPanel extends Component {
   };
 
   renderPages = () => {
-    const { currentPage, pagesCount, fetchMovies } = this.props;
+    const { currentPage, pagesCount, fetchMoviesAction } = this.props;
     const pageIndex = currentPage - 1;
 
     const PAGES_ARR = Array.from({ length: pagesCount }, (v, k) => k + 1);
@@ -65,8 +65,8 @@ class PaginationPanel extends Component {
         <PaginationItem
           key={`pagebutton-${currentPage}`}
           title={currentPage}
-          style="active"
-          onHandleChangePage={fetchMovies}
+          btnStyle="active"
+          onHandleChangePage={fetchMoviesAction}
           currentPage={currentPage}
         />
         {this.renderPageNumbers(after)}
@@ -81,17 +81,20 @@ class PaginationPanel extends Component {
     <Fragment>{pages.map(this.renderPageButton)}</Fragment>
   );
 
-  renderPageButton = pageNumber => (
-    <PaginationItem
-      key={`pagebutton-${pageNumber}`}
-      title={pageNumber}
-      onHandleChangePage={this.props.fetchMovies}
-      currentPage={pageNumber}
-    />
-  );
+  renderPageButton = (pageNumber) => {
+    const { fetchMoviesAction } = this.props;
+    return (
+      <PaginationItem
+        key={`pagebutton-${pageNumber}`}
+        title={pageNumber}
+        onHandleChangePage={fetchMoviesAction}
+        currentPage={pageNumber}
+      />
+    );
+  };
 
   renderPagEnd = () => {
-    const { currentPage, pagesCount, fetchMovies } = this.props;
+    const { currentPage, pagesCount, fetchMoviesAction } = this.props;
     const style = classNames({
       invisible: currentPage === pagesCount,
     });
@@ -100,15 +103,15 @@ class PaginationPanel extends Component {
       <Fragment>
         <PaginationItem
           title="Next"
-          onHandleChangePage={fetchMovies}
+          onHandleChangePage={fetchMoviesAction}
           pageItemStyle={style}
           currentPage={currentPage + 1}
         />
 
         <PaginationItem
           title="Last"
-          style="active"
-          onHandleChangePage={fetchMovies}
+          btnStyle="active"
+          onHandleChangePage={fetchMoviesAction}
           pageItemStyle={style}
           currentPage={pagesCount}
         />
@@ -138,7 +141,7 @@ const mapStateToProps = ({ currentPage, pagesCount }) => ({
 });
 
 const mapDispatchToProps = {
-  fetchMovies,
+  fetchMoviesAction: fetchMovies,
 };
 
 export default connect(

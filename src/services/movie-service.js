@@ -5,19 +5,15 @@ require('dotenv').config();
 
 export default class MovieService {
   async getOneMoviePage(page) {
-    const res = await axios.get(`${process.env.REACT_APP_API_BASE}/now_playing?${process.env.REACT_APP_API_KEY}&language=en-US&page=${page}`);
-
-    return {
-      movies: res.data.results.map(this.transformMovie),
-      pages_count: res.data.total_pages,
-    };
-  }
-
-  async getMovie(id) {
-    const res = await this.getResoureses(
-      `${process.env.REACT_APP_API_BASE}/${id}?${process.env.REACT_APP_API_KEY}`,
-    );
-    return this.transformMovie(res);
+    try {
+      const res = await axios.get(`${process.env.REACT_APP_API_BASE}/now_playing?${process.env.REACT_APP_API_KEY}&language=en-US&page=${page}`);
+      return {
+        movies: res.data.results.map(this.transformMovie),
+        pages_count: res.data.total_pages,
+      };
+    } catch (e) {
+      throw new Error(`Could not fetch!!! received ${e}`);
+    }
   }
 
   transformMovie = movie => ({

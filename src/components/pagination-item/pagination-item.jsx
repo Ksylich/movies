@@ -5,7 +5,7 @@ import noop from 'lodash/noop';
 const PaginationItem = ({
   title,
   pageItemStyle,
-  style,
+  btnStyle,
   onHandleChangePage,
   currentPage,
 }) => {
@@ -20,7 +20,7 @@ const PaginationItem = ({
 
     <li className={`page-item ${pageItemStyle}`}>
       <div className="page-link" role="presentation" onClick={changePage}>
-        <div className={style}>{title}</div>
+        <div className={btnStyle}>{title}</div>
       </div>
     </li>
   );
@@ -28,7 +28,7 @@ const PaginationItem = ({
 
 PaginationItem.defaultProps = {
   pageItemStyle: '',
-  style: '',
+  btnStyle: '',
   onHandleChangePage: noop,
   currentPage: null,
 };
@@ -39,7 +39,7 @@ PaginationItem.propTypes = {
     PropTypes.number,
   ]).isRequired,
   pageItemStyle: PropTypes.string,
-  style: PropTypes.string,
+  btnStyle: PropTypes.string,
   onHandleChangePage: PropTypes.func,
   currentPage: PropTypes.number,
 };

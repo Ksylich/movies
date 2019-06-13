@@ -1,3 +1,3 @@
-import MoviePropTypes from "./movie-prop-types";
+import MoviePropTypes from './movie-prop-types';
 
-export { MoviePropTypes };
+export default MoviePropTypes;

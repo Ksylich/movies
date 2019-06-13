@@ -9,20 +9,20 @@ import MoviePropTypes from '../../prop-type-values/movie-prop-types';
 
 class MovieDetailsContainer extends Component {
   static propTypes = {
-    changeMovie: PropTypes.func.isRequired,
+    changeMovieAction: PropTypes.func.isRequired,
     currentMovieId: PropTypes.number.isRequired,
-    lastLocation: PropTypes.object.isRequired,
+    lastLocation: PropTypes.shape.isRequired,
     movies: PropTypes.arrayOf(MoviePropTypes).isRequired,
     favorites: PropTypes.arrayOf(MoviePropTypes).isRequired,
   };
 
   onNextClick = () => {
-    const { changeMovie, currentMovieId } = this.props;
+    const { changeMovieAction, currentMovieId } = this.props;
     const movies = this.returnArr();
 
     const next = movies.findIndex(movie => movie.id === currentMovieId) + 1;
 
-    changeMovie(next >= movies.length ? movies[0].id : movies[next].id);
+    changeMovieAction(next >= movies.length ? movies[0].id : movies[next].id);
   }
 
   returnArr() {
@@ -63,7 +63,7 @@ const mapStateToProps = ({ movies, favorites, currentMovieId }) => ({
 });
 
 const mapDispatchToProps = {
-  changeMovie,
+  changeMovieAction: changeMovie,
 };
 
 export default withLastLocation(

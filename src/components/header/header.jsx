@@ -11,7 +11,7 @@ const Header = () => (
       <div className="navbar-brand">
         <Link to="/">
           <img src={logo} alt="Smiley face" height={45} width={45} />
-          <label htmlFor="lofo"> Movies</label>
+          <span htmlFor="lofo"> Movies</span>
         </Link>
       </div>
       <div className="navbar-brand" />

@@ -4,8 +4,9 @@
     width: 100%;
     /* min-width: 600px; */
 }
-label{
+span{
     padding-left: 10px;
+    text-decoration: none;
 }
 
 .btn {

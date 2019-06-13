@@ -16,7 +16,7 @@ const initialState = {
   loading: true,
   error: null,
   currentPage: 1,
-  currentMovieId: 299534,
+  currentMovieId: 0,
   pagesCount: 0,
   favorites: [],
 };

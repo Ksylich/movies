@@ -14,22 +14,22 @@ class MovieCardsContainer extends Component {
   };
 
   static propTypes = {
-    fetchMovies: PropTypes.func.isRequired,
+    fetchMoviesAction: PropTypes.func.isRequired,
     loading: PropTypes.bool.isRequired,
-    error: PropTypes.object,
+    error: PropTypes.shape,
     movies: PropTypes.arrayOf(MoviePropTypes).isRequired,
     currentPage: PropTypes.number.isRequired,
-    changeMovie: PropTypes.func.isRequired,
+    changeMovieAction: PropTypes.func.isRequired,
   };
 
   componentDidMount() {
-    const { fetchMovies, currentPage } = this.props;
-    fetchMovies(currentPage);
+    const { fetchMoviesAction, currentPage } = this.props;
+    fetchMoviesAction(currentPage);
   }
 
   render() {
     const {
-      movies, loading, error, changeMovie,
+      movies, loading, error, changeMovieAction,
     } = this.props;
 
     if (loading) {
@@ -40,7 +40,7 @@ class MovieCardsContainer extends Component {
       return <ErrorIndicator />;
     }
 
-    return <MovieCards movies={movies} onHandleChooseMovie={changeMovie} />;
+    return <MovieCards movies={movies} onHandleChooseMovie={changeMovieAction} />;
   }
 }
 
@@ -54,8 +54,8 @@ const mapStateToProps = ({
 });
 
 const mapDispathToProps = {
-  fetchMovies,
-  changeMovie,
+  fetchMoviesAction: fetchMovies,
+  changeMovieAction: changeMovie,
 };
 
 export default connect(
