@@ -32,6 +32,8 @@ class MovieCardsContainer extends Component {
       movies, loading, error, changeMovieAction,
     } = this.props;
 
+    console.log('error', error);
+
     if (loading) {
       return <Spinner />;
     }

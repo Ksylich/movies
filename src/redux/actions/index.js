@@ -1,28 +1,24 @@
 import { createAction } from 'redux-act';
-import MovieService from '../../services/movie-service';
 
-const movies = new MovieService();
+const fetchMovies = createAction('fetch_movies_saga');
+const moviesRequested = createAction('fetch_movie_request_saga');
+const moviesLoaded = createAction('fetch_movie_success_saga');
+const changeCurrentPage = createAction('changeCurrentPage_saga');
+const changePagesCount = createAction('change_pages_count_saga');
+const moviesError = createAction('fetch_movie_failure_saga');
+const changeMovie = createAction('changeChosenMovie_saga');
+const addToFavorites = createAction('add_movie_to_favorites_saga');
+const removeMovie = createAction('remove_movie_from_favorites_saga');
 
-const moviesRequested = createAction('fetch_movie_request');
-const moviesLoaded = createAction('fetch_movie_success');
-const moviesError = createAction('fetch_movie_failure');
-const changeCurrentPage = createAction('changeCurrentPage');
-const changeMovie = createAction('changeChosenMovie');
-const changePagesCount = createAction('change_pages_count');
-const addToFavorites = createAction('add_movie_to_favorites');
-const removeMovie = createAction('remove_movie_from_favorites');
 
-const fetchMovies = (page = 1) => async (dispatch) => {
-  try {
-    dispatch(moviesRequested());
-    const data = await movies.getOneMoviePage(page);
-    dispatch(moviesLoaded(data.movies));
-    dispatch(changeCurrentPage(page));
-    dispatch(changePagesCount(data.pages_count));
-  } catch (e) {
-    dispatch(moviesError(e));
-  }
-};
+const moviesLoadedReducer = createAction('fetch_movie_success_reducer');
+const moviesRequestedReducer = createAction('fetch_movie_request_reducer');
+const changeCurrentPageReducer = createAction('changeCurrentPage_reducer');
+const changePagesCountReducer = createAction('change_pages_count_reducer');
+const moviesErrorReducer = createAction('fetch_movie_failure_reducer');
+const changeMovieReducer = createAction('changeChosenMovie_reducer');
+const addToFavoritesReducer = createAction('add_movie_to_favorites_reducer');
+const removeMovieReducer = createAction('remove_movie_from_favorites_reducer');
 
 export {
   fetchMovies,
@@ -34,4 +30,12 @@ export {
   changePagesCount,
   addToFavorites,
   removeMovie,
+  moviesRequestedReducer,
+  moviesLoadedReducer,
+  changeCurrentPageReducer,
+  changePagesCountReducer,
+  moviesErrorReducer,
+  changeMovieReducer,
+  addToFavoritesReducer,
+  removeMovieReducer,
 };

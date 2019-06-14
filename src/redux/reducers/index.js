@@ -1,14 +1,14 @@
 import { createReducer } from 'redux-act';
 
 import {
-  moviesError,
-  moviesLoaded,
-  moviesRequested,
-  changeCurrentPage,
-  changeMovie,
-  changePagesCount,
-  addToFavorites,
-  removeMovie,
+  moviesErrorReducer,
+  moviesLoadedReducer,
+  moviesRequestedReducer,
+  changeCurrentPageReducer,
+  changeMovieReducer,
+  changePagesCountReducer,
+  addToFavoritesReducer,
+  removeMovieReducer,
 } from '../actions';
 
 const initialState = {
@@ -23,41 +23,41 @@ const initialState = {
 
 const reducer = createReducer(
   {
-    [moviesRequested]: state => ({
+    [moviesRequestedReducer]: state => ({
       ...state,
       movies: [],
       loading: true,
       error: null,
     }),
-    [moviesLoaded]: (state, payload) => ({
+    [moviesLoadedReducer]: (state, payload) => ({
       ...state,
       movies: payload,
       loading: false,
       error: null,
     }),
-    [moviesError]: (state, payload) => ({
+    [moviesErrorReducer]: (state, payload) => ({
       ...state,
       movies: [],
       loading: false,
       error: payload,
     }),
-    [changeCurrentPage]: (state, payload) => ({
+    [changeCurrentPageReducer]: (state, payload) => ({
       ...state,
       currentPage: payload,
     }),
-    [changeMovie]: (state, payload) => ({
+    [changeMovieReducer]: (state, payload) => ({
       ...state,
       currentMovieId: payload,
     }),
-    [changePagesCount]: (state, payload) => ({
+    [changePagesCountReducer]: (state, payload) => ({
       ...state,
       pagesCount: payload,
     }),
-    [addToFavorites]: (state, payload) => ({
+    [addToFavoritesReducer]: (state, payload) => ({
       ...state,
       favorites: [...state.favorites, payload],
     }),
-    [removeMovie]: (state, payload) => {
+    [removeMovieReducer]: (state, payload) => {
       const movieIndex = state.favorites.findIndex(movie => movie.id === payload);
       return {
         ...state,

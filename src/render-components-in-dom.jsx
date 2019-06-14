@@ -7,16 +7,14 @@ import ErrorBoundry from './components/error-boundry';
 
 import store from './redux/store';
 
-export default class RenderInDom {
-  static RenderComponents() {
-    return (
-      <Provider store={store}>
-        <ErrorBoundry>
-          <Router>
-            <App />
-          </Router>
-        </ErrorBoundry>
-      </Provider>
-    );
-  }
+export default function RenderComponents() {
+  return (
+    <Provider store={store}>
+      <ErrorBoundry>
+        <Router>
+          <App />
+        </Router>
+      </ErrorBoundry>
+    </Provider>
+  );
 }

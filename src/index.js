@@ -1,7 +1,7 @@
 import ReactDOM from 'react-dom';
-import RenderInDom from './render-components-in-dom';
+import RenderComponents from './render-components-in-dom';
 
 ReactDOM.render(
-  RenderInDom.RenderComponents(),
+  RenderComponents(),
   document.getElementById('root'),
 );
