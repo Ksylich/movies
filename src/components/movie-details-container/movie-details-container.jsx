@@ -8,14 +8,6 @@ import { changeMovie } from '../../redux/actions';
 import MoviePropTypes from '../../prop-type-values/movie-prop-types';
 
 class MovieDetailsContainer extends Component {
-  static propTypes = {
-    changeMovieAction: PropTypes.func.isRequired,
-    currentMovieId: PropTypes.number.isRequired,
-    lastLocation: PropTypes.shape.isRequired,
-    movies: PropTypes.arrayOf(MoviePropTypes).isRequired,
-    favorites: PropTypes.arrayOf(MoviePropTypes).isRequired,
-  };
-
   onNextClick = () => {
     const { changeMovieAction, currentMovieId } = this.props;
     const movies = this.returnArr();
@@ -55,6 +47,14 @@ class MovieDetailsContainer extends Component {
     );
   }
 }
+
+MovieDetailsContainer.propTypes = {
+  changeMovieAction: PropTypes.func.isRequired,
+  currentMovieId: PropTypes.number.isRequired,
+  lastLocation: PropTypes.shape({}).isRequired,
+  movies: PropTypes.arrayOf(MoviePropTypes).isRequired,
+  favorites: PropTypes.arrayOf(MoviePropTypes).isRequired,
+};
 
 const mapStateToProps = ({ movies, favorites, currentMovieId }) => ({
   movies,

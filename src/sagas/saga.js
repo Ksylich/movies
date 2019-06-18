@@ -2,17 +2,14 @@ import {
   takeLatest, takeEvery, call, all, put,
 } from 'redux-saga/effects';
 import * as actions from '../redux/actions';
-// import MovieService from '../services/movie-service';
+import MovieService from '../services/movie-service';
 
-// const moviesService = new MovieService();
-
-import * as api from '../services/api';
-
+const moviesService = new MovieService();
 
 function* fetch({ payload }) {
   try {
     yield put(actions.moviesRequested());
-    const data = yield call(api.getOneMoviePage, payload);
+    const data = yield call(moviesService.getOneMoviePage, payload);
     yield put(actions.moviesLoaded(data.movies));
     yield put(actions.changeCurrentPage(payload));
     yield put(actions.changePagesCount(data.pages_count));

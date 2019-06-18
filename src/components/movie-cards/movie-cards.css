@@ -10,11 +10,17 @@
   .body {
     grid-template-columns: repeat(6, 1fr);
   }
+  .main{
+    height: 92.6vh;
+  }
 }
 
 @media screen and (max-width: 1335px) {
   .body {
     grid-template-columns: repeat(4, 1fr);
+  }
+  .main{
+    height: 92.8vh;
   }
 }
 
@@ -22,7 +28,12 @@
   .body {
     grid-template-columns: repeat(3, 1fr);
   }
+  .main{
+    height: 92.6vh;
+  }
 }
+
+
 
 /* iPhone 5 in landscape */
 @media only screen and (min-device-width: 320px) and (max-device-width: 568px) and (orientation: portrait) {
@@ -39,6 +50,10 @@
     font-size: 30px; /* Размер текста подсказки */
     font-weight: 400;
   }
+.main{
+  width: 101%;
+  height: 97.6vh;
+}
 
 
   

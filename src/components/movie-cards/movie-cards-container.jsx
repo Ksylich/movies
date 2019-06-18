@@ -16,7 +16,7 @@ class MovieCardsContainer extends Component {
   static propTypes = {
     fetchMoviesAction: PropTypes.func.isRequired,
     loading: PropTypes.bool.isRequired,
-    error: PropTypes.shape,
+    error: PropTypes.shape({}),
     movies: PropTypes.arrayOf(MoviePropTypes).isRequired,
     currentPage: PropTypes.number.isRequired,
     changeMovieAction: PropTypes.func.isRequired,
@@ -32,7 +32,6 @@ class MovieCardsContainer extends Component {
       movies, loading, error, changeMovieAction,
     } = this.props;
 
-    console.log('error', error);
 
     if (loading) {
       return <Spinner />;

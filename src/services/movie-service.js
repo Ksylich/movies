@@ -4,8 +4,7 @@ require('dotenv').config();
 
 
 export default class MovieService {
-  async getOneMoviePage(page) {
-    console.log('page', page);
+  getOneMoviePage = async (page) => {
     try {
       const res = await axios.get(`${process.env.REACT_APP_API_BASE}/now_playing?${process.env.REACT_APP_API_KEY}&language=en-US&page=${page}`);
       return {
