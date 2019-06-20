@@ -10,17 +10,11 @@
   .body {
     grid-template-columns: repeat(6, 1fr);
   }
-  .main{
-    height: 92.6vh;
-  }
 }
 
 @media screen and (max-width: 1335px) {
   .body {
     grid-template-columns: repeat(4, 1fr);
-  }
-  .main{
-    height: 92.8vh;
   }
 }
 
@@ -29,7 +23,8 @@
     grid-template-columns: repeat(3, 1fr);
   }
   .main{
-    height: 92.6vh;
+    min-height: 100hv;
+    background-attachment: fixed;
   }
 }
 
@@ -50,11 +45,9 @@
     font-size: 30px; /* Размер текста подсказки */
     font-weight: 400;
   }
-.main{
-  width: 101%;
-  height: 97.6vh;
-}
-
+  .main{
+    width: 101%;
+  }
 
   
 }
