@@ -6,10 +6,11 @@ import App from './components/app';
 import ErrorBoundry from './components/error-boundry';
 
 import store from './redux/store';
+import storeM from './mobx/stores/store';
 
 export default function RenderComponents() {
   return (
-    <Provider store={store}>
+    <Provider store={store} storeM={storeM} >
       <ErrorBoundry>
         <Router>
           <App />
