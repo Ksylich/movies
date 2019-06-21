@@ -1,7 +1,7 @@
 import { MOVIES_STORE, moviesStore } from './movies';
 
-const storeM = {
+const store = {
   [MOVIES_STORE]: moviesStore,
 };
 
-export default storeM;
+export default store;

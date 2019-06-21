@@ -1,23 +1,25 @@
 import React, { Component, Fragment } from 'react';
-import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import { inject, observer } from 'mobx-react';
 
-import { fetchMovies } from '../../redux/actions';
 import PaginationItem from '../pagination-item';
+import { MOVIES_STORE } from '../../mobx/stores/movies';
 
 import './pagination-panel.css';
 
-
+@inject(MOVIES_STORE)
+@observer
 class PaginationPanel extends Component {
   static propTypes = {
     currentPage: PropTypes.number.isRequired,
     pagesCount: PropTypes.number.isRequired,
-    fetchMoviesAction: PropTypes.func.isRequired,
+    changeCurrentPage: PropTypes.func.isRequired,
   };
 
   renderPagBegin = () => {
-    const { currentPage, fetchMoviesAction } = this.props;
+    const { [MOVIES_STORE]: moviesStore } = this.props;
+    const { currentPage } = moviesStore;
     const style = classNames({
       invisible: currentPage === 1,
     });
@@ -26,14 +28,14 @@ class PaginationPanel extends Component {
         <PaginationItem
           title="First"
           btnStyle="active"
-          onHandleChangePage={fetchMoviesAction}
+          onHandleChangePage={moviesStore.changeCurrentPage}
           pageItemStyle={style}
           currentPage={1}
         />
 
         <PaginationItem
           title="Prev"
-          onHandleChangePage={fetchMoviesAction}
+          onHandleChangePage={moviesStore.changeCurrentPage}
           pageItemStyle={style}
           currentPage={currentPage - 1}
         />
@@ -42,7 +44,8 @@ class PaginationPanel extends Component {
   };
 
   renderPages = () => {
-    const { currentPage, pagesCount, fetchMoviesAction } = this.props;
+    const { [MOVIES_STORE]: moviesStore } = this.props;
+    const { currentPage, pagesCount } = moviesStore;
     const pageIndex = currentPage - 1;
 
     const PAGES_ARR = Array.from({ length: pagesCount }, (v, k) => k + 1);
@@ -66,7 +69,7 @@ class PaginationPanel extends Component {
           key={`pagebutton-${currentPage}`}
           title={currentPage}
           btnStyle="active"
-          onHandleChangePage={fetchMoviesAction}
+          onHandleChangePage={moviesStore.changeCurrentPage}
           currentPage={currentPage}
         />
         {this.renderPageNumbers(after)}
@@ -82,19 +85,20 @@ class PaginationPanel extends Component {
   );
 
   renderPageButton = (pageNumber) => {
-    const { fetchMoviesAction } = this.props;
+    const { [MOVIES_STORE]: moviesStore } = this.props;
     return (
       <PaginationItem
         key={`pagebutton-${pageNumber}`}
         title={pageNumber}
-        onHandleChangePage={fetchMoviesAction}
+        onHandleChangePage={moviesStore.changeCurrentPage}
         currentPage={pageNumber}
       />
     );
   };
 
   renderPagEnd = () => {
-    const { currentPage, pagesCount, fetchMoviesAction } = this.props;
+    const { [MOVIES_STORE]: moviesStore } = this.props;
+    const { currentPage, pagesCount } = moviesStore;
     const style = classNames({
       invisible: currentPage === pagesCount,
     });
@@ -103,7 +107,7 @@ class PaginationPanel extends Component {
       <Fragment>
         <PaginationItem
           title="Next"
-          onHandleChangePage={fetchMoviesAction}
+          onHandleChangePage={moviesStore.changeCurrentPage}
           pageItemStyle={style}
           currentPage={currentPage + 1}
         />
@@ -111,7 +115,7 @@ class PaginationPanel extends Component {
         <PaginationItem
           title="Last"
           btnStyle="active"
-          onHandleChangePage={fetchMoviesAction}
+          onHandleChangePage={moviesStore.changeCurrentPage}
           pageItemStyle={style}
           currentPage={pagesCount}
         />
@@ -135,16 +139,4 @@ class PaginationPanel extends Component {
 }
 
 
-const mapStateToProps = ({ currentPage, pagesCount }) => ({
-  currentPage,
-  pagesCount,
-});
-
-const mapDispatchToProps = {
-  fetchMoviesAction: fetchMovies,
-};
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(PaginationPanel);
+export default PaginationPanel;

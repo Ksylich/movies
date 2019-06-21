@@ -1,13 +1,16 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import { inject, observer } from 'mobx-react';
+
 import PropTypes from 'prop-types';
 
 import ErrorIndicator from '../error-indicator';
-import { fetchMovies, changeMovie } from '../../redux/actions';
 import Spinner from '../spinner';
 import MoviePropTypes from '../../prop-type-values/movie-prop-types';
 import MovieCards from './movie-cards';
+import { MOVIES_STORE } from '../../mobx/stores/movies';
 
+@inject(MOVIES_STORE)
+@observer
 class MovieCardsContainer extends Component {
   static defaultProps = {
     error: {},
@@ -23,15 +26,15 @@ class MovieCardsContainer extends Component {
   };
 
   componentDidMount() {
-    const { fetchMoviesAction, currentPage } = this.props;
-    fetchMoviesAction(currentPage);
+    const { [MOVIES_STORE]: { fetchMovies } } = this.props;
+    fetchMovies();
   }
 
   render() {
+    const { [MOVIES_STORE]: moviesStore } = this.props;
     const {
-      movies, loading, error, changeMovieAction,
-    } = this.props;
-
+      movies, loading, error,
+    } = moviesStore;
 
     if (loading) {
       return <Spinner />;
@@ -41,25 +44,9 @@ class MovieCardsContainer extends Component {
       return <ErrorIndicator />;
     }
 
-    return <MovieCards movies={movies} onHandleChooseMovie={changeMovieAction} />;
+    return <MovieCards movies={movies} onHandleChooseMovie={() => {}} />;
   }
 }
 
-const mapStateToProps = ({
-  movies, loading, error, currentPage,
-}) => ({
-  movies,
-  loading,
-  error,
-  currentPage,
-});
 
-const mapDispathToProps = {
-  fetchMoviesAction: fetchMovies,
-  changeMovieAction: changeMovie,
-};
-
-export default connect(
-  mapStateToProps,
-  mapDispathToProps,
-)(MovieCardsContainer);
+export default MovieCardsContainer;
