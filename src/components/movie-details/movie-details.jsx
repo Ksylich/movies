@@ -14,13 +14,13 @@ import NoPoster from '../../assets/icons/NoPoster.jpg';
 
 
 class MovieDetails extends Component {
-    static propTypes = {
-      movie: MoviePropTypes.isRequired,
-      isFavorite: PropTypes.bool.isRequired,
-      onHandleNext: PropTypes.func.isRequired,
-      addToFavoritesAction: PropTypes.func.isRequired,
-      history: PropTypes.shape({ push: PropTypes.func.isRequired }).isRequired,
-    };
+  static propTypes = {
+    movie: MoviePropTypes.isRequired,
+    isFavorite: PropTypes.bool.isRequired,
+    onHandleNext: PropTypes.func.isRequired,
+    addToFavoritesAction: PropTypes.func.isRequired,
+    history: PropTypes.shape({ push: PropTypes.func.isRequired }).isRequired,
+  };
 
   addToFavorites = () => {
     const { movie, addToFavoritesAction } = this.props;

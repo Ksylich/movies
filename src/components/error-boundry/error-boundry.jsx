@@ -4,24 +4,21 @@ import { PropTypes } from 'prop-types';
 import ErrorIndicator from '../error-indicator';
 
 export default class ErrorBoundry extends Component {
-    state = {
-      hasError: false,
-    };
+  static propTypes = {
+    children: PropTypes.node.isRequired,
+  };
 
-    static propTypes = {
-      children: PropTypes.node.isRequired,
-    };
+  state = {
+    hasError: false,
+  };
 
-    componentDidCatch() {
-      this.setState({ hasError: true });
-    }
+  componentDidCatch() {
+    this.setState({ hasError: true });
+  }
 
-    render() {
-      const { hasError } = this.state;
-      const { children } = this.props;
-      if (hasError) {
-        return <ErrorIndicator />;
-      }
-      return children;
-    }
+  render() {
+    const { hasError } = this.state;
+    const { children } = this.props;
+    return hasError ? <ErrorIndicator /> : children;
+  }
 }

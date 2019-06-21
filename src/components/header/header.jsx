@@ -52,7 +52,6 @@ My Account
   </div>
 
 
-
 );
 
 export default Header;

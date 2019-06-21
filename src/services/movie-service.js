@@ -26,3 +26,4 @@ export default class MovieService {
     posterPath: movie.poster_path ? process.env.REACT_APP_POSTER_BASE + movie.poster_path : null,
   });
 }
+
