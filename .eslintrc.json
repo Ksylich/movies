@@ -29,7 +29,9 @@
         "react/prop-types": [1],
         "react/require-default-props": [0],
         "no-underscore-dangle": [2, { "allow": ["__REDUX_DEVTOOLS_EXTENSION_COMPOSE__"] }],
-        "no-console":0
+        "no-console":0,
+        "no-duplicate-imports":0,
+        "import/no-duplicates":0
     }
   
 }

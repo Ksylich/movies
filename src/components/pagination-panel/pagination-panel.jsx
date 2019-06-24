@@ -5,6 +5,7 @@ import { inject, observer } from 'mobx-react';
 
 import PaginationItem from '../pagination-item';
 import { MOVIES_STORE } from '../../mobx/stores/movies';
+import MovieStorePropTypes from '../../mobx/stores/movies';
 
 import './pagination-panel.css';
 
@@ -12,14 +13,13 @@ import './pagination-panel.css';
 @observer
 class PaginationPanel extends Component {
   static propTypes = {
-    currentPage: PropTypes.number.isRequired,
-    pagesCount: PropTypes.number.isRequired,
-    changeCurrentPage: PropTypes.func.isRequired,
+    MOVIES_STORE: PropTypes.shape({
+      MovieStorePropTypes,
+    }),
   };
 
   renderPagBegin = () => {
-    const { [MOVIES_STORE]: moviesStore } = this.props;
-    const { currentPage } = moviesStore;
+    const { [MOVIES_STORE]: { currentPage, changeCurrentPage } } = this.props;
     const style = classNames({
       invisible: currentPage === 1,
     });
@@ -28,14 +28,14 @@ class PaginationPanel extends Component {
         <PaginationItem
           title="First"
           btnStyle="active"
-          onHandleChangePage={moviesStore.changeCurrentPage}
+          onHandleChangePage={changeCurrentPage}
           pageItemStyle={style}
           currentPage={1}
         />
 
         <PaginationItem
           title="Prev"
-          onHandleChangePage={moviesStore.changeCurrentPage}
+          onHandleChangePage={changeCurrentPage}
           pageItemStyle={style}
           currentPage={currentPage - 1}
         />
@@ -44,8 +44,7 @@ class PaginationPanel extends Component {
   };
 
   renderPages = () => {
-    const { [MOVIES_STORE]: moviesStore } = this.props;
-    const { currentPage, pagesCount } = moviesStore;
+    const { [MOVIES_STORE]: { currentPage, pagesCount, changeCurrentPage } } = this.props;
     const pageIndex = currentPage - 1;
 
     const PAGES_ARR = Array.from({ length: pagesCount }, (v, k) => k + 1);
@@ -69,7 +68,7 @@ class PaginationPanel extends Component {
           key={`pagebutton-${currentPage}`}
           title={currentPage}
           btnStyle="active"
-          onHandleChangePage={moviesStore.changeCurrentPage}
+          onHandleChangePage={changeCurrentPage}
           currentPage={currentPage}
         />
         {this.renderPageNumbers(after)}
@@ -85,20 +84,19 @@ class PaginationPanel extends Component {
   );
 
   renderPageButton = (pageNumber) => {
-    const { [MOVIES_STORE]: moviesStore } = this.props;
+    const { [MOVIES_STORE]: { changeCurrentPage } } = this.props;
     return (
       <PaginationItem
         key={`pagebutton-${pageNumber}`}
         title={pageNumber}
-        onHandleChangePage={moviesStore.changeCurrentPage}
+        onHandleChangePage={changeCurrentPage}
         currentPage={pageNumber}
       />
     );
   };
 
   renderPagEnd = () => {
-    const { [MOVIES_STORE]: moviesStore } = this.props;
-    const { currentPage, pagesCount } = moviesStore;
+    const { [MOVIES_STORE]: { currentPage, pagesCount, changeCurrentPage } } = this.props;
     const style = classNames({
       invisible: currentPage === pagesCount,
     });
@@ -107,7 +105,7 @@ class PaginationPanel extends Component {
       <Fragment>
         <PaginationItem
           title="Next"
-          onHandleChangePage={moviesStore.changeCurrentPage}
+          onHandleChangePage={changeCurrentPage}
           pageItemStyle={style}
           currentPage={currentPage + 1}
         />
@@ -115,7 +113,7 @@ class PaginationPanel extends Component {
         <PaginationItem
           title="Last"
           btnStyle="active"
-          onHandleChangePage={moviesStore.changeCurrentPage}
+          onHandleChangePage={changeCurrentPage}
           pageItemStyle={style}
           currentPage={pagesCount}
         />

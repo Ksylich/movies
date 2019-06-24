@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import { inject, observer } from 'mobx-react';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
@@ -8,23 +8,27 @@ import './movie-details.css';
 
 import { DecktopNav, DecktopMovieInformation } from '../movie-details-desktop';
 import { MobNav, MobMovieInformation } from '../movie-details-mb';
-import { addToFavorites } from '../../redux/actions';
-import MoviePropTypes from '../../prop-type-values/movie-prop-types';
+import MovieStorePropTypes from '../../mobx/stores/movies';
 import NoPoster from '../../assets/icons/NoPoster.jpg';
+import { MOVIES_STORE } from '../../mobx/stores/movies';
+import MoviePropTypes from '../../prop-type-values';
 
-
+@inject(MOVIES_STORE)
+@observer
 class MovieDetails extends Component {
   static propTypes = {
-    movie: MoviePropTypes.isRequired,
+    MOVIES_STORE: PropTypes.shape({
+      MovieStorePropTypes,
+    }),
     isFavorite: PropTypes.bool.isRequired,
     onHandleNext: PropTypes.func.isRequired,
-    addToFavoritesAction: PropTypes.func.isRequired,
     history: PropTypes.shape({ push: PropTypes.func.isRequired }).isRequired,
+    movie: MoviePropTypes.isRequired,
   };
 
   addToFavorites = () => {
-    const { movie, addToFavoritesAction } = this.props;
-    addToFavoritesAction(movie);
+    const { [MOVIES_STORE]: { addToFavorites }, movie } = this.props;
+    addToFavorites(movie);
   };
 
   render() {
@@ -59,14 +63,4 @@ class MovieDetails extends Component {
   }
 }
 
-
-const mapDispatchToProps = {
-  addToFavoritesAction: addToFavorites,
-};
-
-export default withRouter(
-  connect(
-    null,
-    mapDispatchToProps,
-  )(MovieDetails),
-);
+export default withRouter(MovieDetails);
